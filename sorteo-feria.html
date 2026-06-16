@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sorteo Feria 2026 — Biwov_ | Impulsa tu Emprendimiento</title>
-  <link href="https://fonts.googleapis.com/css2?family=Museo+Moderno:wght@700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,10 +30,11 @@
       color: var(--white);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      max-width: 100vw;
     }
 
     .logo {
-      font-family: 'Museo Moderno', sans-serif;
+      font-family: 'MuseoModerno', sans-serif;
       font-weight: 700;
       font-size: 1.55rem;
       color: var(--white);
@@ -537,7 +540,7 @@
       transition: transform 0.25s;
     }
 
-    .ticket-card:hover { transform: translateY(-8px); }
+    .ticket-card:hover { transform: translateY(-4px); }
 
     .ticket-inner {
       border-radius: 16px;
@@ -693,6 +696,47 @@
 
     .ticket-note a { color: var(--gold); text-decoration: none; }
     .ticket-note a:hover { text-decoration: underline; }
+
+    /* Acordeón ticket */
+    .ticket-collapse {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease;
+    }
+
+    .ticket-card.open .ticket-collapse { max-height: 600px; }
+
+    .ticket-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .t-gold .ticket-toggle:hover  { background: rgba(245,200,66,0.12); color: var(--gold); border-color: rgba(245,200,66,0.3); }
+    .t-blue .ticket-toggle:hover  { background: rgba(50,153,204,0.12); color: #7DC8EC; border-color: rgba(50,153,204,0.3); }
+    .t-slate .ticket-toggle:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+
+    .ticket-toggle .toggle-icon {
+      display: inline-block;
+      transition: transform 0.3s;
+      font-style: normal;
+    }
+
+    .ticket-card.open .ticket-toggle .toggle-icon { transform: rotate(180deg); }
 
     /* ── PARTICIPAR SECTION ── */
     #participar {
@@ -1089,159 +1133,12 @@
       </div>
     </div>
 
-    <!-- PASOS INLINE EN EL HERO -->
-    <div class="hero-steps fade-up">
-      <div class="hero-steps-label">
-        <span class="req-badge">OBLIGATORIO PARA PARTICIPAR</span>
-      </div>
-
-      <div class="hero-steps-grid">
-        <!-- PASO 1 -->
-        <div class="hero-step-item priority">
-          <div class="hs-num">1</div>
-          <div class="hs-content">
-            <span class="hs-label">Sigue en Instagram</span>
-            <a href="https://instagram.com/kathedigital__" target="_blank" class="hs-handle">@kathedigital__</a>
-          </div>
-        </div>
-        <!-- PASO 2 -->
-        <div class="hero-step-item priority">
-          <div class="hs-num">2</div>
-          <div class="hs-content">
-            <span class="hs-label">Sigue en Instagram</span>
-            <a href="https://instagram.com/lauragcreativa" target="_blank" class="hs-handle">@lauragcreativa</a>
-          </div>
-        </div>
-        <!-- PASO 3 -->
-        <div class="hero-step-item priority">
-          <div class="hs-num">3</div>
-          <div class="hs-content">
-            <span class="hs-label">Sigue en Instagram</span>
-            <a href="https://instagram.com/biwov_" target="_blank" class="hs-handle">@biwov_</a>
-          </div>
-        </div>
-        <!-- PASO 4 -->
-        <div class="hero-step-item">
-          <div class="hs-num secondary">4</div>
-          <div class="hs-content">
-            <span class="hs-label">Luego llena el formulario</span>
-            <span class="hs-sub">Solo valida si ya sigues las 3 cuentas</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-warning">
-        ⚠️ Si llenas el formulario sin seguir las 3 cuentas, tu participación <strong>no es válida</strong>.
-      </div>
-    </div>
-
     <div class="hero-btns fade-up">
       <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" class="btn-gold">
         Llenar el formulario →
       </a>
       <a href="#premios" class="btn-ghost">Ver los premios</a>
     </div>
-  </div>
-</section>
-
-
-<!-- PREMIOS -->
-<section id="premios">
-  <div class="center fade-up">
-    <div class="section-tag">Los premios</div>
-    <h2 class="section-title">3 ganadores. 3 premios reales.</h2>
-    <p class="section-sub">Sin letra pequeña oculta. Herramientas digitales concretas para impulsar tu emprendimiento.</p>
-  </div>
-
-  <div class="premios-grid">
-
-    <!-- PRIMER PREMIO -->
-    <div class="ticket-card t-gold fade-up">
-      <div class="ticket-inner">
-        <div class="ticket-header">
-          <div class="prize-ribbon">Primer lugar</div>
-          <div class="prize-medal">🥇</div>
-          <div class="prize-place">Premio principal</div>
-          <h3>Página Web + SEO<br>+ Asesoría Estratégica</h3>
-          <p>Tu presencia digital profesional, lista para atraer clientes y posicionarte en Google.</p>
-        </div>
-        <div class="ticket-divider">
-          <div class="ticket-divider-line"></div>
-        </div>
-        <div class="ticket-body">
-          <ul class="ticket-list">
-            <li><div class="t-check">✓</div>Página web o landing page con menú de 3 secciones desplegables</li>
-            <li><div class="t-check">✓</div>Footer completo y 6 secciones dentro de la página</li>
-            <li><div class="t-check">✓</div>Posicionamiento SEO básico para aparecer en Google</li>
-            <li><div class="t-check">✓</div>1 hora de asesoría estratégica de marketing digital</li>
-            <li><div class="t-check">✓</div>Creada con herramientas gratuitas de alto rendimiento</li>
-          </ul>
-          <div class="ticket-note">
-            * Dominio personalizado y funciones extra tienen costo adicional.
-            <a href="terminos.html">Ver términos completos →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SEGUNDO PREMIO -->
-    <div class="ticket-card t-blue fade-up">
-      <div class="ticket-inner">
-        <div class="ticket-header">
-          <div class="prize-ribbon">Segundo lugar</div>
-          <div class="prize-medal">🥈</div>
-          <div class="prize-place">Premio producción</div>
-          <h3>Video Promocional<br>para Redes Sociales</h3>
-          <p>Un video de 1 minuto para que tu empresa impacte en Instagram, TikTok o Facebook.</p>
-        </div>
-        <div class="ticket-divider">
-          <div class="ticket-divider-line"></div>
-        </div>
-        <div class="ticket-body">
-          <ul class="ticket-list">
-            <li><div class="t-check">✓</div>Sesión de grabación de hasta 3 horas</li>
-            <li><div class="t-check">✓</div>Video final editado de 1 minuto para redes</li>
-            <li><div class="t-check">✓</div>Formato vertical (9:16) para Reels y TikTok</li>
-            <li><div class="t-check">✓</div>1 ronda de ajustes menores incluida</li>
-            <li><div class="t-check">✓</div>Grabación dentro de la ciudad de Manizales</li>
-          </ul>
-          <div class="ticket-note">
-            * Ubicaciones fuera de Manizales sujetas a negociación previa.
-            <a href="terminos.html">Ver términos completos →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TERCER PREMIO -->
-    <div class="ticket-card t-slate fade-up">
-      <div class="ticket-inner">
-        <div class="ticket-header">
-          <div class="prize-ribbon">Tercer lugar</div>
-          <div class="prize-medal">🥉</div>
-          <div class="prize-place">Premio asesoría</div>
-          <h3>Asesoría Estratégica<br>de Marketing Digital</h3>
-          <p>1 hora uno a uno con nuestro equipo para potenciar tu negocio con un plan concreto.</p>
-        </div>
-        <div class="ticket-divider">
-          <div class="ticket-divider-line"></div>
-        </div>
-        <div class="ticket-body">
-          <ul class="ticket-list">
-            <li><div class="t-check">✓</div>1 hora de asesoría personalizada</li>
-            <li><div class="t-check">✓</div>Análisis de tu situación digital actual</li>
-            <li><div class="t-check">✓</div>Plan de acción concreto para tu negocio</li>
-            <li><div class="t-check">✓</div>Sesión por videollamada (Zoom o Meet)</li>
-            <li><div class="t-check">✓</div>Resumen escrito de los puntos tratados</li>
-          </ul>
-          <div class="ticket-note">
-            * Debe agendarse en los 15 días siguientes a la notificación.
-            <a href="terminos.html">Ver términos completos →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1283,6 +1180,122 @@
   <div class="participar-cta">
     <p>Debes seguir las 3 cuentas Y completar el formulario para que tu participación sea válida.</p>
     <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" class="btn-gold">Llenar el formulario ahora</a>
+  </div>
+</section>
+
+
+<!-- PREMIOS -->
+<section id="premios">
+  <div class="center fade-up">
+    <div class="section-tag">Los premios</div>
+    <h2 class="section-title">3 ganadores. 3 premios reales.</h2>
+    <p class="section-sub">Sin letra pequeña oculta. Herramientas digitales concretas para impulsar tu emprendimiento.</p>
+  </div>
+
+  <div class="premios-grid">
+
+    <!-- PRIMER PREMIO -->
+    <div class="ticket-card t-gold fade-up">
+      <div class="ticket-inner">
+        <div class="ticket-header">
+          <div class="prize-ribbon">Primer lugar</div>
+          <div class="prize-medal">🥇</div>
+          <div class="prize-place">Premio principal</div>
+          <h3>Página Web + SEO<br>+ Asesoría Estratégica</h3>
+          <p>Tu presencia digital profesional, lista para atraer clientes y posicionarte en Google.</p>
+          <button class="ticket-toggle" onclick="togglePremio(this)">
+            Ver qué incluye <i class="toggle-icon">▼</i>
+          </button>
+        </div>
+        <div class="ticket-collapse">
+          <div class="ticket-divider">
+            <div class="ticket-divider-line"></div>
+          </div>
+          <div class="ticket-body">
+            <ul class="ticket-list">
+              <li><div class="t-check">✓</div>Página web o landing page con menú de 3 secciones desplegables</li>
+              <li><div class="t-check">✓</div>Footer completo y 6 secciones dentro de la página</li>
+              <li><div class="t-check">✓</div>Posicionamiento SEO básico para aparecer en Google</li>
+              <li><div class="t-check">✓</div>1 hora de asesoría estratégica de marketing digital</li>
+              <li><div class="t-check">✓</div>Creada con herramientas gratuitas de alto rendimiento</li>
+            </ul>
+            <div class="ticket-note">
+              * Dominio personalizado y funciones extra tienen costo adicional.
+              <a href="terminos.html">Ver términos completos →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEGUNDO PREMIO -->
+    <div class="ticket-card t-blue fade-up">
+      <div class="ticket-inner">
+        <div class="ticket-header">
+          <div class="prize-ribbon">Segundo lugar</div>
+          <div class="prize-medal">🥈</div>
+          <div class="prize-place">Premio producción</div>
+          <h3>Video Promocional<br>para Redes Sociales</h3>
+          <p>Un video de 1 minuto para que tu empresa impacte en Instagram, TikTok o Facebook.</p>
+          <button class="ticket-toggle" onclick="togglePremio(this)">
+            Ver qué incluye <i class="toggle-icon">▼</i>
+          </button>
+        </div>
+        <div class="ticket-collapse">
+          <div class="ticket-divider">
+            <div class="ticket-divider-line"></div>
+          </div>
+          <div class="ticket-body">
+            <ul class="ticket-list">
+              <li><div class="t-check">✓</div>Sesión de grabación de hasta 3 horas</li>
+              <li><div class="t-check">✓</div>Video final editado de 1 minuto para redes</li>
+              <li><div class="t-check">✓</div>Formato vertical (9:16) para Reels y TikTok</li>
+              <li><div class="t-check">✓</div>1 ronda de ajustes menores incluida</li>
+              <li><div class="t-check">✓</div>Grabación dentro de la ciudad de Manizales</li>
+            </ul>
+            <div class="ticket-note">
+              * Ubicaciones fuera de Manizales sujetas a negociación previa.
+              <a href="terminos.html">Ver términos completos →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERCER PREMIO -->
+    <div class="ticket-card t-slate fade-up">
+      <div class="ticket-inner">
+        <div class="ticket-header">
+          <div class="prize-ribbon">Tercer lugar</div>
+          <div class="prize-medal">🥉</div>
+          <div class="prize-place">Premio asesoría</div>
+          <h3>Asesoría Estratégica<br>de Marketing Digital</h3>
+          <p>1 hora uno a uno con nuestro equipo para potenciar tu negocio con un plan concreto.</p>
+          <button class="ticket-toggle" onclick="togglePremio(this)">
+            Ver qué incluye <i class="toggle-icon">▼</i>
+          </button>
+        </div>
+        <div class="ticket-collapse">
+          <div class="ticket-divider">
+            <div class="ticket-divider-line"></div>
+          </div>
+          <div class="ticket-body">
+            <ul class="ticket-list">
+              <li><div class="t-check">✓</div>1 hora de asesoría personalizada</li>
+              <li><div class="t-check">✓</div>Análisis de tu situación digital actual</li>
+              <li><div class="t-check">✓</div>Plan de acción concreto para tu negocio</li>
+              <li><div class="t-check">✓</div>Sesión por videollamada (Zoom o Meet)</li>
+              <li><div class="t-check">✓</div>Resumen escrito de los puntos tratados</li>
+            </ul>
+            <div class="ticket-note">
+              * Debe agendarse en los 15 días siguientes a la notificación.
+              <a href="terminos.html">Ver términos completos →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1357,6 +1370,16 @@
 
 
 <script>
+  /* Acordeón premios */
+  function togglePremio(btn) {
+    const card = btn.closest('.ticket-card');
+    const isOpen = card.classList.contains('open');
+    card.classList.toggle('open', !isOpen);
+    btn.innerHTML = isOpen
+      ? 'Ver qué incluye <i class="toggle-icon">▼</i>'
+      : 'Ocultar información <i class="toggle-icon">▼</i>';
+  }
+
   /* Countdown */
   const sorteoFecha = new Date('2026-06-20T00:00:00-05:00');
 

@@ -6,7 +6,7 @@
   <title>Términos y Condiciones del Sorteo — Biwov_</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Museo+Moderno:wght@700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,10 +30,11 @@
       color: var(--off-white);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     .logo {
-      font-family: 'Museo Moderno', sans-serif;
+      font-family: 'MuseoModerno', sans-serif;
       font-weight: 700;
       font-size: 1.6rem;
       color: var(--white);
@@ -434,6 +435,8 @@
       .content-wrap { padding: 3rem 5% 5rem; }
       .t-section h2 { font-size: 1.05rem; }
       .prize-block { padding: 1.25rem; }
+      .t-list li { flex-wrap: wrap; word-break: break-word; overflow-wrap: break-word; }
+      .prize-block p, .prize-block li { word-break: break-word; overflow-wrap: break-word; }
     }
 
     @media (max-width: 640px) {
@@ -442,6 +445,10 @@
       footer { flex-direction: column; text-align: center; }
       .toc ol { grid-template-columns: 1fr; }
       .page-header { padding: 8rem 5% 3rem; }
+      .content-wrap { padding: 2.5rem 4% 4rem; }
+      .prize-block { padding: 1rem; }
+      .t-section-header { gap: 0.65rem; }
+      .note-box, .info-box { padding: 0.9rem 1rem; }
     }
 
   </style>
