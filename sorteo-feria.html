@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorteo Feria 2026 — Biwov_ | Impulsa tu Emprendimiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Museo+Moderno:wght@700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:     #060E1F;
+      --dark:   #0D3B66;
+      --blue:   #3299CC;
+      --gold:   #F5C842;
+      --gold2:  #E8A020;
+      --red:    #D94F3D;
+      --white:  #FFFFFF;
+      --muted:  rgba(255,255,255,0.55);
+      --border: rgba(245,200,66,0.25);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo {
+      font-family: 'Museo Moderno', sans-serif;
+      font-weight: 700;
+      font-size: 1.55rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6%;
+      background: rgba(6,14,31,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(50,153,204,0.15);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+    .nav-cta {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 0.6rem 1.35rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
+
+    /* ── CONFETTI ── */
+    .confetti-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .c-piece {
+      position: absolute;
+      width: 8px;
+      height: 12px;
+      border-radius: 2px;
+      opacity: 0;
+      animation: confettiFall linear infinite;
+    }
+
+    @keyframes confettiFall {
+      0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(110vh) rotate(720deg); }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 6% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 50% 0%,   rgba(50,153,204,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 85% 70%,  rgba(245,200,66,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 35% at 10% 80%,  rgba(217,79,61,0.1)   0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 50% 100%, rgba(13,59,102,0.5)   0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .event-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(245,200,66,0.35);
+      background: rgba(245,200,66,0.08);
+      padding: 0.38rem 1rem;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
+    }
+
+    .event-tag span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 1.4s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.6); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.9rem;
+    }
+
+    #hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    #hero h1 .gold { color: var(--gold); }
+    #hero h1 .outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ── SORTEO DATE ── */
+    .sorteo-date-badge {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      background: rgba(245,200,66,0.08);
+      padding: 0.45rem 1.25rem;
+      border-radius: 99px;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .count-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,200,66,0.2);
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      text-align: center;
+      min-width: 76px;
+    }
+
+    .count-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .count-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .count-sep {
+      font-size: 2rem;
+      font-weight: 900;
+      color: rgba(245,200,66,0.4);
+      align-self: center;
+      padding-bottom: 1rem;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #060E1F;
+      background: var(--gold);
+      padding: 1rem 2.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 28px rgba(245,200,66,0.35);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(245,200,66,0.5);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      padding: 0.95rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(245,200,66,0.6); color: var(--gold); }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── HERO STEPS (inline participar) ── */
+    .hero-steps {
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(245,200,66,0.3);
+      border-radius: 16px;
+      padding: 1.5rem 1.75rem;
+    }
+
+    .hero-steps-label {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .req-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #060E1F;
+      background: var(--gold);
+      padding: 0.35rem 1rem;
+      border-radius: 99px;
+    }
+
+    .hero-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      padding: 0.75rem 0.5rem;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.2s;
+    }
+
+    .hero-step-item.priority {
+      background: rgba(245,200,66,0.06);
+      border-color: rgba(245,200,66,0.2);
+    }
+
+    .hero-step-item.priority:hover { border-color: rgba(245,200,66,0.5); }
+
+    .hs-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #060E1F;
+      font-size: 0.9rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 12px rgba(245,200,66,0.4);
+      flex-shrink: 0;
+    }
+
+    .hs-num.secondary {
+      background: rgba(50,153,204,0.25);
+      color: #7DC8EC;
+      box-shadow: none;
+    }
+
+    .hs-content { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .hs-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+
+    .hs-handle {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hs-handle:hover { color: #fff; text-decoration: underline; }
+
+    .hs-sub {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .hero-warning {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      background: rgba(217,79,61,0.1);
+      border: 1px solid rgba(217,79,61,0.25);
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      line-height: 1.5;
+    }
+
+    .hero-warning strong { color: #f07060; }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 62px; left: 0; right: 0;
+      background: rgba(6,14,31,0.98);
+      backdrop-filter: blur(16px);
+      padding: 1.5rem 6%;
+      border-bottom: 1px solid rgba(50,153,204,0.15);
+      z-index: 99;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ── SECTION BASE ── */
+    .section-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+      color: var(--white);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* ── PREMIOS SECTION ── */
+    #premios {
+      padding: 5.5rem 6%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #premios::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 0% 50%,   rgba(245,200,66,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 50%,  rgba(50,153,204,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .premios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* TICKET CARD */
+    .ticket-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: visible;
+      transition: transform 0.25s;
+    }
+
+    .ticket-card:hover { transform: translateY(-8px); }
+
+    .ticket-inner {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Ticket notch effect */
+    .ticket-notch {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticket-notch::before,
+    .ticket-notch::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg);
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .ticket-notch::before { left: -11px; }
+    .ticket-notch::after  { right: -11px; }
+
+    .ticket-header {
+      padding: 2rem 1.75rem 1.5rem;
+      position: relative;
+    }
+
+    .t-gold  .ticket-header { background: linear-gradient(135deg, #2a1a00, #3d2800); }
+    .t-blue  .ticket-header { background: linear-gradient(135deg, #0a2a50, #0d3b66); }
+    .t-slate .ticket-header { background: linear-gradient(135deg, #0f1f35, #162840); }
+
+    .prize-ribbon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 99px;
+    }
+
+    .t-gold  .prize-ribbon { background: rgba(245,200,66,0.15); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
+    .t-blue  .prize-ribbon { background: rgba(50,153,204,0.15); color: #7DC8EC;     border: 1px solid rgba(50,153,204,0.3); }
+    .t-slate .prize-ribbon { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.12); }
+
+    .prize-medal {
+      font-size: 3rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .prize-place {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .t-gold  .prize-place { color: var(--gold); }
+    .t-blue  .prize-place { color: #7DC8EC; }
+    .t-slate .prize-place { color: rgba(255,255,255,0.5); }
+
+    .ticket-header h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .ticket-header p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* Dashed divider for ticket */
+    .ticket-divider {
+      position: relative;
+      padding: 0 1.75rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticket-divider-line {
+      flex: 1;
+      border-top: 2px dashed rgba(255,255,255,0.1);
+    }
+
+    .t-gold  .ticket-divider-line { border-color: rgba(245,200,66,0.2); }
+    .t-blue  .ticket-divider-line { border-color: rgba(50,153,204,0.2); }
+
+    .ticket-body {
+      padding: 1.5rem 1.75rem 1.75rem;
+    }
+
+    .t-gold  .ticket-body { background: rgba(245,200,66,0.05); }
+    .t-blue  .ticket-body { background: rgba(50,153,204,0.04); }
+    .t-slate .ticket-body { background: rgba(255,255,255,0.03); }
+
+    .ticket-list { list-style: none; margin-bottom: 1.35rem; }
+
+    .ticket-list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+      line-height: 1.55;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .ticket-list li:last-child { border-bottom: none; }
+
+    .t-check {
+      width: 17px; height: 17px; min-width: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .t-gold  .t-check { background: rgba(245,200,66,0.15); color: var(--gold); }
+    .t-blue  .t-check { background: rgba(50,153,204,0.15); color: #7DC8EC; }
+    .t-slate .t-check { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+    .ticket-note {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+      line-height: 1.55;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ticket-note a { color: var(--gold); text-decoration: none; }
+    .ticket-note a:hover { text-decoration: underline; }
+
+    /* ── PARTICIPAR SECTION ── */
+    #participar {
+      padding: 5.5rem 6%;
+      position: relative;
+      background: rgba(13,59,102,0.25);
+      border-top: 1px solid rgba(50,153,204,0.12);
+      border-bottom: 1px solid rgba(50,153,204,0.12);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.75rem 1.4rem;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .step-card:hover {
+      border-color: rgba(245,200,66,0.3);
+      transform: translateY(-4px);
+    }
+
+    .step-num {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #060E1F;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.1rem;
+      box-shadow: 0 4px 16px rgba(245,200,66,0.35);
+    }
+
+    .step-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .ig-pill {
+      display: inline-block;
+      margin-top: 0.65rem;
+      background: rgba(50,153,204,0.1);
+      border: 1px solid rgba(50,153,204,0.25);
+      color: #7DC8EC;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .ig-pill:hover { background: rgba(50,153,204,0.22); color: var(--white); }
+
+    .participar-cta {
+      text-align: center;
+      margin-top: 2.75rem;
+    }
+
+    .participar-cta p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    /* ── ANUNCIO SECTION ── */
+    #anuncio {
+      padding: 5.5rem 6%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #anuncio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(245,200,66,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .anuncio-box {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .anuncio-frame {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      background: rgba(245,200,66,0.04);
+      margin-top: 2.5rem;
+    }
+
+    .anuncio-frame .big-date {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .anuncio-frame .date-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
+    }
+
+    .anuncio-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .a-stat .a-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .a-stat .a-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .a-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    .ig-accounts {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .ig-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(245,200,66,0.08);
+      border: 1px solid rgba(245,200,66,0.2);
+      padding: 0.35rem 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .ig-badge:hover { background: rgba(245,200,66,0.16); }
+
+    /* ── CTA FINAL ── */
+    #cta-final {
+      padding: 5.5rem 6%;
+      text-align: center;
+      position: relative;
+    }
+
+    .cta-voucher {
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-voucher-inner {
+      background: linear-gradient(135deg, #0D3B66, #0a2a50);
+      border: 1px solid rgba(50,153,204,0.25);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-voucher-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(245,200,66,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-voucher-inner h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-voucher-inner p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-voucher-inner .btn-gold { position: relative; z-index: 1; }
+
+    .cta-terms {
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-terms a { color: rgba(50,153,204,0.8); text-decoration: none; }
+    .cta-terms a:hover { color: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(50,153,204,0.12);
+      padding: 2.25rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer small {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      font-weight: 400;
+    }
+
+    .f-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .f-links a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .f-links a:hover { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .premios-grid { grid-template-columns: 1fr; max-width: 500px; margin-inline: auto; }
+    }
+
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+      footer      { flex-direction: column; text-align: center; }
+      .anuncio-stats { gap: 1.25rem; }
+      .a-divider  { display: none; }
+      .hero-btns  { flex-direction: column; align-items: center; }
+      .hero-btns .btn-gold, .hero-btns .btn-ghost { width: 100%; justify-content: center; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .hero-steps-grid { grid-template-columns: 1fr; }
+      .anuncio-frame { padding: 2rem 1.25rem; }
+      .cta-voucher-inner { padding: 2.5rem 1.5rem; }
+      #hero { padding: 7rem 5% 4rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- CONFETTI -->
+<div class="confetti-wrap" aria-hidden="true" id="confetti"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">biwov_</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Servicios</a></li>
+    <li><a href="sorteo-feria.html" class="active">Sorteo Feria 2026</a></li>
+    <li><a href="terminos.html">Términos</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="https://api.whatsapp.com/send/?phone=573133125157&text=Hola+Biwov_%2C+quiero+informaci%C3%B3n+sobre+sus+servicios&type=phone_number&app_absent=0" target="_blank" class="nav-cta">Hablemos</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Inicio</a>
+  <a href="index.html#services">Servicios</a>
+  <a href="sorteo-feria.html">Sorteo Feria 2026</a>
+  <a href="terminos.html">Términos y Condiciones</a>
+  <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" style="color:var(--gold);">Llenar Formulario</a>
+</div>
+
+
+<!-- HERO -->
+<section id="hero">
+  <div class="confetti-wrap" aria-hidden="true" id="confetti-hero"></div>
+  <div class="hero-inner">
+    <div class="event-tag fade-up"><span></span>4ta Feria Empresarial · Expoferias Manizales 2026</div>
+    <div class="hero-eyebrow fade-up">Promoción exclusiva</div>
+    <h1 class="fade-up">
+      <span class="outline">IMPULSA</span><br>
+      <span class="gold">TU</span> NEGOCIO
+    </h1>
+    <p class="hero-desc fade-up">
+      Estuvimos en la feria buscando emprendedores como tú.
+      Participa en nuestro sorteo y gana herramientas digitales reales
+      para llevar tu negocio al siguiente nivel.
+    </p>
+
+    <div class="sorteo-date-badge fade-up">Sorteo: Sábado 20 de junio de 2026</div>
+
+    <div class="countdown-wrap fade-up">
+      <div class="count-box">
+        <div class="count-num" id="cd-dias">--</div>
+        <div class="count-label">Días</div>
+      </div>
+      <div class="count-sep">:</div>
+      <div class="count-box">
+        <div class="count-num" id="cd-horas">--</div>
+        <div class="count-label">Horas</div>
+      </div>
+      <div class="count-sep">:</div>
+      <div class="count-box">
+        <div class="count-num" id="cd-min">--</div>
+        <div class="count-label">Min</div>
+      </div>
+      <div class="count-sep">:</div>
+      <div class="count-box">
+        <div class="count-num" id="cd-seg">--</div>
+        <div class="count-label">Seg</div>
+      </div>
+    </div>
+
+    <!-- PASOS INLINE EN EL HERO -->
+    <div class="hero-steps fade-up">
+      <div class="hero-steps-label">
+        <span class="req-badge">OBLIGATORIO PARA PARTICIPAR</span>
+      </div>
+
+      <div class="hero-steps-grid">
+        <!-- PASO 1 -->
+        <div class="hero-step-item priority">
+          <div class="hs-num">1</div>
+          <div class="hs-content">
+            <span class="hs-label">Sigue en Instagram</span>
+            <a href="https://instagram.com/kathedigital__" target="_blank" class="hs-handle">@kathedigital__</a>
+          </div>
+        </div>
+        <!-- PASO 2 -->
+        <div class="hero-step-item priority">
+          <div class="hs-num">2</div>
+          <div class="hs-content">
+            <span class="hs-label">Sigue en Instagram</span>
+            <a href="https://instagram.com/lauragcreativa" target="_blank" class="hs-handle">@lauragcreativa</a>
+          </div>
+        </div>
+        <!-- PASO 3 -->
+        <div class="hero-step-item priority">
+          <div class="hs-num">3</div>
+          <div class="hs-content">
+            <span class="hs-label">Sigue en Instagram</span>
+            <a href="https://instagram.com/biwov_" target="_blank" class="hs-handle">@biwov_</a>
+          </div>
+        </div>
+        <!-- PASO 4 -->
+        <div class="hero-step-item">
+          <div class="hs-num secondary">4</div>
+          <div class="hs-content">
+            <span class="hs-label">Luego llena el formulario</span>
+            <span class="hs-sub">Solo valida si ya sigues las 3 cuentas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-warning">
+        ⚠️ Si llenas el formulario sin seguir las 3 cuentas, tu participación <strong>no es válida</strong>.
+      </div>
+    </div>
+
+    <div class="hero-btns fade-up">
+      <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" class="btn-gold">
+        Llenar el formulario →
+      </a>
+      <a href="#premios" class="btn-ghost">Ver los premios</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- PREMIOS -->
+<section id="premios">
+  <div class="center fade-up">
+    <div class="section-tag">Los premios</div>
+    <h2 class="section-title">3 ganadores. 3 premios reales.</h2>
+    <p class="section-sub">Sin letra pequeña oculta. Herramientas digitales concretas para impulsar tu emprendimiento.</p>
+  </div>
+
+  <div class="premios-grid">
+
+    <!-- PRIMER PREMIO -->
+    <div class="ticket-card t-gold fade-up">
+      <div class="ticket-inner">
+        <div class="ticket-header">
+          <div class="prize-ribbon">Primer lugar</div>
+          <div class="prize-medal">🥇</div>
+          <div class="prize-place">Premio principal</div>
+          <h3>Página Web + SEO<br>+ Asesoría Estratégica</h3>
+          <p>Tu presencia digital profesional, lista para atraer clientes y posicionarte en Google.</p>
+        </div>
+        <div class="ticket-divider">
+          <div class="ticket-divider-line"></div>
+        </div>
+        <div class="ticket-body">
+          <ul class="ticket-list">
+            <li><div class="t-check">✓</div>Página web o landing page con menú de 3 secciones desplegables</li>
+            <li><div class="t-check">✓</div>Footer completo y 6 secciones dentro de la página</li>
+            <li><div class="t-check">✓</div>Posicionamiento SEO básico para aparecer en Google</li>
+            <li><div class="t-check">✓</div>1 hora de asesoría estratégica de marketing digital</li>
+            <li><div class="t-check">✓</div>Creada con herramientas gratuitas de alto rendimiento</li>
+          </ul>
+          <div class="ticket-note">
+            * Dominio personalizado y funciones extra tienen costo adicional.
+            <a href="terminos.html">Ver términos completos →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEGUNDO PREMIO -->
+    <div class="ticket-card t-blue fade-up">
+      <div class="ticket-inner">
+        <div class="ticket-header">
+          <div class="prize-ribbon">Segundo lugar</div>
+          <div class="prize-medal">🥈</div>
+          <div class="prize-place">Premio producción</div>
+          <h3>Video Promocional<br>para Redes Sociales</h3>
+          <p>Un video de 1 minuto para que tu empresa impacte en Instagram, TikTok o Facebook.</p>
+        </div>
+        <div class="ticket-divider">
+          <div class="ticket-divider-line"></div>
+        </div>
+        <div class="ticket-body">
+          <ul class="ticket-list">
+            <li><div class="t-check">✓</div>Sesión de grabación de hasta 3 horas</li>
+            <li><div class="t-check">✓</div>Video final editado de 1 minuto para redes</li>
+            <li><div class="t-check">✓</div>Formato vertical (9:16) para Reels y TikTok</li>
+            <li><div class="t-check">✓</div>1 ronda de ajustes menores incluida</li>
+            <li><div class="t-check">✓</div>Grabación dentro de la ciudad de Manizales</li>
+          </ul>
+          <div class="ticket-note">
+            * Ubicaciones fuera de Manizales sujetas a negociación previa.
+            <a href="terminos.html">Ver términos completos →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERCER PREMIO -->
+    <div class="ticket-card t-slate fade-up">
+      <div class="ticket-inner">
+        <div class="ticket-header">
+          <div class="prize-ribbon">Tercer lugar</div>
+          <div class="prize-medal">🥉</div>
+          <div class="prize-place">Premio asesoría</div>
+          <h3>Asesoría Estratégica<br>de Marketing Digital</h3>
+          <p>1 hora uno a uno con nuestro equipo para potenciar tu negocio con un plan concreto.</p>
+        </div>
+        <div class="ticket-divider">
+          <div class="ticket-divider-line"></div>
+        </div>
+        <div class="ticket-body">
+          <ul class="ticket-list">
+            <li><div class="t-check">✓</div>1 hora de asesoría personalizada</li>
+            <li><div class="t-check">✓</div>Análisis de tu situación digital actual</li>
+            <li><div class="t-check">✓</div>Plan de acción concreto para tu negocio</li>
+            <li><div class="t-check">✓</div>Sesión por videollamada (Zoom o Meet)</li>
+            <li><div class="t-check">✓</div>Resumen escrito de los puntos tratados</li>
+          </ul>
+          <div class="ticket-note">
+            * Debe agendarse en los 15 días siguientes a la notificación.
+            <a href="terminos.html">Ver términos completos →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- COMO PARTICIPAR -->
+<section id="participar">
+  <div class="center fade-up">
+    <div class="section-tag">Cómo participar</div>
+    <h2 class="section-title">Solo 4 pasos para entrar</h2>
+    <p class="section-sub">Gratis, rápido y desde tu celular. Puedes participar aunque no hayas estado en la feria.</p>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card fade-up">
+      <div class="step-num">1</div>
+      <h3>Sigue a Kathe Digital</h3>
+      <p>Automatizaciones, marketing digital, estrategia y páginas web.</p>
+      <a href="https://instagram.com/kathedigital__" target="_blank" class="ig-pill">@kathedigital__</a>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">2</div>
+      <h3>Sigue a Laura G. Creativa</h3>
+      <p>Publicista especializada en branding, estrategia y marketing digital.</p>
+      <a href="https://instagram.com/lauragcreativa" target="_blank" class="ig-pill">@lauragcreativa</a>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">3</div>
+      <h3>Sigue a Biwov_</h3>
+      <p>Sigue la cuenta oficial de la agencia en Instagram.</p>
+      <a href="https://instagram.com/biwov_" target="_blank" class="ig-pill">@biwov_</a>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">4</div>
+      <h3>Llena el formulario</h3>
+      <p>Completa el formulario con tus datos. Solo los inscritos entran al sorteo.</p>
+    </div>
+  </div>
+
+  <div class="participar-cta">
+    <p>Debes seguir las 3 cuentas Y completar el formulario para que tu participación sea válida.</p>
+    <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" class="btn-gold">Llenar el formulario ahora</a>
+  </div>
+</section>
+
+
+<!-- ANUNCIO -->
+<section id="anuncio">
+  <div class="anuncio-box">
+    <div class="center fade-up">
+      <div class="section-tag">El sorteo</div>
+      <h2 class="section-title">Fecha del anuncio</h2>
+      <p class="section-sub">Los 3 ganadores se revelarán en vivo a través de nuestras cuentas de Instagram.</p>
+    </div>
+
+    <div class="anuncio-frame fade-up">
+      <div class="big-date">Sáb 20·Jun<br>2026</div>
+      <p class="date-sub">El sorteo se realiza este sábado. Si participaste, mantente pendiente<br>de nuestras redes — podrías ser el próximo ganador.</p>
+
+      <div class="anuncio-stats">
+        <div class="a-stat">
+          <div class="a-num">3</div>
+          <div class="a-label">Ganadores</div>
+        </div>
+        <div class="a-divider"></div>
+        <div class="a-stat">
+          <div class="a-num">100%</div>
+          <div class="a-label">Gratuito</div>
+        </div>
+        <div class="a-divider"></div>
+        <div class="a-stat">
+          <div class="a-num">$0</div>
+          <div class="a-label">Costo de participar</div>
+        </div>
+      </div>
+
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Anuncio oficial en:</p>
+      <div class="ig-accounts">
+        <a href="https://instagram.com/biwov_" target="_blank" class="ig-badge">@biwov_</a>
+        <a href="https://instagram.com/kathedigital__" target="_blank" class="ig-badge">@kathedigital__</a>
+        <a href="https://instagram.com/lauragcreativa" target="_blank" class="ig-badge">@lauragcreativa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="cta-voucher">
+    <div class="cta-voucher-inner fade-up">
+      <h2>¿Ya llenaste<br>el formulario?</h2>
+      <p>Asegúrate de seguir las 3 cuentas de Instagram y completar el formulario antes del sábado 20 de junio. Solo los inscritos son elegibles para ganar.</p>
+      <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" class="btn-gold">
+        Quiero participar →
+      </a>
+      <p class="cta-terms">Al participar aceptas los <a href="terminos.html">términos y condiciones</a> del sorteo.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="logo">biwov_</a>
+  <small>© 2026 Biwov_ · Colombia · biwov.com@gmail.com</small>
+  <ul class="f-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="index.html#services">Servicios</a></li>
+    <li><a href="terminos.html">Términos y Condiciones</a></li>
+    <li><a href="https://api.whatsapp.com/send/?phone=573133125157&text=Hola+Biwov_&type=phone_number&app_absent=0" target="_blank">WhatsApp</a></li>
+  </ul>
+</footer>
+
+
+<script>
+  /* Countdown */
+  const sorteoFecha = new Date('2026-06-20T00:00:00-05:00');
+
+  function actualizarCountdown() {
+    const diff = sorteoFecha - new Date();
+    if (diff <= 0) {
+      document.querySelector('.countdown-wrap').innerHTML =
+        '<p style="font-size:1.2rem;font-weight:800;color:var(--gold);">¡El sorteo ya se realizó! Revisa nuestras redes.</p>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000)  / 60000);
+    const s = Math.floor((diff % 60000)    / 1000);
+    document.getElementById('cd-dias').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-horas').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-min').textContent   = String(m).padStart(2,'0');
+    document.getElementById('cd-seg').textContent   = String(s).padStart(2,'0');
+  }
+
+  actualizarCountdown();
+  setInterval(actualizarCountdown, 1000);
+
+  /* Confetti */
+  const COLORS = ['#F5C842','#3299CC','#D94F3D','#ffffff','#E8A020','#7DC8EC'];
+  const wrap = document.getElementById('confetti');
+  const PIECES = 40;
+
+  for (let i = 0; i < PIECES; i++) {
+    const el = document.createElement('div');
+    el.className = 'c-piece';
+    el.style.left       = Math.random() * 100 + 'vw';
+    el.style.width      = (6 + Math.random() * 6) + 'px';
+    el.style.height     = (10 + Math.random() * 8) + 'px';
+    el.style.background = COLORS[Math.floor(Math.random() * COLORS.length)];
+    el.style.animationDuration  = (4 + Math.random() * 6) + 's';
+    el.style.animationDelay     = (Math.random() * 6) + 's';
+    el.style.borderRadius       = Math.random() > 0.5 ? '50%' : '2px';
+    wrap.appendChild(el);
+  }
+
+  /* Hamburger */
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+
+  /* Fade-up observer */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 90);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

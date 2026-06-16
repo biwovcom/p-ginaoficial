@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos y Condiciones del Sorteo — Biwov_</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Museo+Moderno:wght@700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:        #0D3B66;
+      --bg-alt:    #0a2e52;
+      --blue:      #3299CC;
+      --yellow:    #fec927;
+      --white:     #ffffff;
+      --off-white: #e2eaf2;
+      --muted:     #7DC8EC;
+      --border:    rgba(50,153,204,0.2);
+      --border-y:  rgba(254,201,39,0.2);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--off-white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo {
+      font-family: 'Museo Moderno', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 6vw;
+      background: rgba(8, 12, 16, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.25rem;
+    }
+
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--white); }
+    nav ul a.active { color: var(--yellow); }
+
+    .nav-btn {
+      background: var(--yellow);
+      color: #0d3b66;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .nav-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* HEADER */
+    .page-header {
+      padding: 9rem 6vw 4rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(254,201,39,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header .breadcrumb {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header .breadcrumb a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .page-header .breadcrumb a:hover { color: var(--white); }
+
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header .meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header .meta span { color: var(--yellow); font-weight: 700; }
+
+    /* CONTENT */
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 6vw 6rem;
+    }
+
+    /* INDEX */
+    .toc {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .toc h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 2rem;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      font-size: 0.875rem;
+    }
+
+    .toc ol li::before {
+      content: counter(toc) ". ";
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .toc ol a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .toc ol a:hover { color: var(--white); }
+
+    /* SECTIONS */
+    .t-section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .t-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .t-num {
+      width: 36px; height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: rgba(254,201,39,0.1);
+      border: 1px solid var(--border-y);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--yellow);
+    }
+
+    .t-section h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+
+    .t-section p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+    }
+
+    .t-section p:last-child { margin-bottom: 0; }
+
+    .t-list {
+      list-style: none;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .t-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.875rem;
+      color: var(--off-white);
+      font-weight: 500;
+      line-height: 1.65;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .t-list li:last-child { border-bottom: none; }
+
+    .t-list li::before {
+      content: '—';
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* PRIZE BLOCKS */
+    .prize-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .prize-block.gold { border-left: 3px solid var(--yellow); }
+    .prize-block.silver { border-left: 3px solid var(--blue); }
+    .prize-block.bronze { border-left: 3px solid var(--muted); }
+
+    .prize-block .prize-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .gold .prize-label { color: var(--yellow); }
+    .silver .prize-label { color: var(--blue); }
+    .bronze .prize-label { color: var(--muted); }
+
+    .prize-block h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    /* WARNING BOX */
+    .note-box {
+      background: rgba(254,201,39,0.06);
+      border: 1px solid rgba(254,201,39,0.2);
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      color: var(--off-white);
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    .note-box strong { color: var(--yellow); }
+
+    .info-box {
+      background: rgba(61,152,204,0.06);
+      border: 1px solid rgba(61,152,204,0.2);
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+      color: var(--off-white);
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    .info-box strong { color: var(--blue); }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--white); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.25rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer small { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+
+    .f-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .f-links a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .f-links a:hover { color: var(--white); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 62px; left: 0; right: 0;
+      background: rgba(6,14,31,0.98);
+      backdrop-filter: blur(16px);
+      padding: 1.5rem 6%;
+      border-bottom: 1px solid rgba(50,153,204,0.15);
+      z-index: 99;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--blue); }
+
+    @media (max-width: 768px) {
+      .content-wrap { padding: 3rem 5% 5rem; }
+      .t-section h2 { font-size: 1.05rem; }
+      .prize-block { padding: 1.25rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+      footer { flex-direction: column; text-align: center; }
+      .toc ol { grid-template-columns: 1fr; }
+      .page-header { padding: 8rem 5% 3rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">biwov_</a>
+  <ul>
+    <li><a href="index.html#services">Servicios</a></li>
+    <li><a href="sorteo-feria.html">Sorteo Feria 2026</a></li>
+    <li><a href="terminos.html" class="active">Términos</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="https://api.whatsapp.com/send/?phone=573133125157&text=Hola+Biwov_%2C+quiero+informaci%C3%B3n+sobre+sus+servicios&type=phone_number&app_absent=0" target="_blank" class="nav-btn">Hablemos</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Inicio</a>
+  <a href="index.html#services">Servicios</a>
+  <a href="sorteo-feria.html">Sorteo Feria 2026</a>
+  <a href="terminos.html">Términos y Condiciones</a>
+</div>
+
+<script>
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+</script>
+
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="index.html">Biwov_</a> › <a href="sorteo-feria.html">Sorteo Feria 2026</a> › Términos y Condiciones
+  </div>
+  <h1>Términos y Condiciones<br>del Sorteo</h1>
+  <p class="meta">
+    4ta Feria Empresarial y de Emprendimiento · Manizales 2026 ·
+    <span>Sorteo: Sábado 20 de junio de 2026</span>
+  </p>
+</div>
+
+
+<!-- CONTENIDO -->
+<div class="content-wrap">
+
+  <a href="sorteo-feria.html" class="back-link">← Volver al sorteo</a>
+
+  <!-- INDICE -->
+  <div class="toc">
+    <h4>Contenido</h4>
+    <ol>
+      <li><a href="#s1">Información general</a></li>
+      <li><a href="#s2">Requisitos de participación</a></li>
+      <li><a href="#s3">Primer Premio — Página Web</a></li>
+      <li><a href="#s4">Segundo Premio — Video</a></li>
+      <li><a href="#s5">Tercer Premio — Asesoría</a></li>
+      <li><a href="#s6">Condiciones generales</a></li>
+      <li><a href="#s7">Anuncio de ganadores</a></li>
+      <li><a href="#s8">Responsabilidades</a></li>
+    </ol>
+  </div>
+
+
+  <!-- 1. INFORMACIÓN GENERAL -->
+  <div class="t-section" id="s1">
+    <div class="t-section-header">
+      <div class="t-num">1</div>
+      <h2>Información general</h2>
+    </div>
+    <p>
+      El presente sorteo es organizado por <strong style="color:var(--white);">Biwov_</strong>, agencia colombiana de marketing digital y ecosistemas digitales, con participación de <strong style="color:var(--white);">Kathe Digital</strong> y <strong style="color:var(--white);">Laura G. Creativa</strong>.
+    </p>
+    <p>
+      El sorteo se origina en la <strong style="color:var(--white);">4ta Feria Empresarial y de Emprendimiento</strong> realizada en Expoferias, ciudad de Manizales, el día lunes 15 de junio de 2026. La actividad de recolección de participantes estuvo activa desde el día del evento hasta el cierre del formulario.
+    </p>
+    <p>
+      El sorteo tiene como objetivo impulsar a emprendedores colombianos con herramientas digitales concretas, construir comunidad y dar a conocer los servicios de Biwov_.
+    </p>
+    <div class="info-box">
+      <strong>Fecha del sorteo:</strong> Sábado 20 de junio de 2026.<br>
+      <strong>Número de ganadores:</strong> 3 (tres) emprendedores.<br>
+      <strong>Participación:</strong> Completamente gratuita.
+    </div>
+  </div>
+
+
+  <!-- 2. REQUISITOS DE PARTICIPACIÓN -->
+  <div class="t-section" id="s2">
+    <div class="t-section-header">
+      <div class="t-num">2</div>
+      <h2>Requisitos de participación</h2>
+    </div>
+    <p>Para que una participación sea válida, el participante debe cumplir <strong style="color:var(--white);">todos</strong> los siguientes requisitos antes de la fecha del sorteo:</p>
+    <ul class="t-list">
+      <li>Seguir la cuenta de Instagram <strong style="color:var(--white);">@kathedigital__</strong> de forma activa (no bloqueada ni privada).</li>
+      <li>Seguir la cuenta de Instagram <strong style="color:var(--white);">@lauragcreativa</strong> de forma activa.</li>
+      <li>Seguir la cuenta de Instagram <strong style="color:var(--white);">@biwov_</strong> de forma activa.</li>
+      <li>Haber completado el formulario de registro en el enlace oficial: <strong style="color:var(--white);">forms.gle/WQveLdeT2MRfJnDT9</strong></li>
+    </ul>
+    <div class="note-box">
+      <strong>Importante:</strong> El incumplimiento de cualquiera de estos requisitos al momento del sorteo invalidará automáticamente la participación. Se verificará que el ganador siga las 3 cuentas al momento del anuncio.
+    </div>
+  </div>
+
+
+  <!-- 3. PRIMER PREMIO -->
+  <div class="t-section" id="s3">
+    <div class="t-section-header">
+      <div class="t-num">3</div>
+      <h2>Primer Premio — Página Web</h2>
+    </div>
+
+    <div class="prize-block gold">
+      <div class="prize-label">Primer Lugar</div>
+      <h3>Diseño y Desarrollo de Página Web + SEO + Asesoría</h3>
+
+      <p><strong style="color:var(--white);">Descripción del premio:</strong></p>
+      <ul class="t-list">
+        <li>Creación de una página web o landing page profesional.</li>
+        <li>La página incluye un menú de 3 secciones (al hacer clic se despliega el contenido), un footer completo y 6 secciones dentro de la página.</li>
+        <li>Posicionamiento SEO básico para mejorar la visibilidad en buscadores como Google.</li>
+        <li>1 (una) hora de asesoría estratégica personalizada de marketing digital.</li>
+      </ul>
+
+      <p><strong style="color:var(--white);">Condiciones del desarrollo web:</strong></p>
+      <ul class="t-list">
+        <li>La página web será desarrollada con <strong style="color:var(--white);">herramientas gratuitas de alto rendimiento</strong>. El servicio en sí no tiene costo para el ganador.</li>
+        <li>Si el emprendedor desea un <strong style="color:var(--white);">dominio personalizado</strong> (ej. www.minegocio.com), este deberá ser adquirido por su cuenta. El costo típico es de $50.000 a $100.000 COP/año según el proveedor.</li>
+        <li>Funciones o elementos adicionales no contemplados en el premio (tienda en línea, pasarela de pagos, animaciones avanzadas, etc.) tendrán un costo adicional a cargo del emprendedor si desea incluirlos.</li>
+        <li>Las imágenes y el material visual pueden ser proporcionados por el emprendedor o por el equipo de Biwov_, según se acuerde.</li>
+      </ul>
+
+      <p><strong style="color:var(--white);">Plazos y obligaciones del ganador:</strong></p>
+      <ul class="t-list">
+        <li>El ganador tendrá <strong style="color:var(--white);">15 días calendario</strong> a partir de la notificación para proporcionar toda la información necesaria (textos, imágenes, datos del negocio, colores, referencias, etc.).</li>
+        <li>El emprendedor debe estar <strong style="color:var(--white);">disponible y activo</strong> para responder preguntas y validar avances durante el proceso de desarrollo.</li>
+        <li>El tiempo estimado de entrega es de <strong style="color:var(--white);">8 días hábiles</strong> contados a partir de la recepción completa de toda la información por parte del cliente.</li>
+        <li>Si el ganador no proporciona la información requerida dentro del plazo de 15 días calendario, el premio se dará por <strong style="color:var(--white);">terminado y será otorgado a otro emprendedor participante</strong>.</li>
+      </ul>
+
+      <p><strong style="color:var(--white);">Garantía y revisiones:</strong></p>
+      <ul class="t-list">
+        <li>Se incluye una garantía de <strong style="color:var(--white);">8 días calendario</strong> a partir de la entrega final de la página web para reportar errores de funcionamiento o ajustes menores.</li>
+        <li>Se incluye <strong style="color:var(--white);">1 ronda de revisiones menores</strong> (ajustes de texto, colores o imágenes) dentro del período de garantía.</li>
+        <li>Cambios estructurales o de diseño mayor solicitados después de la entrega no están cubiertos por el premio.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 4. SEGUNDO PREMIO -->
+  <div class="t-section" id="s4">
+    <div class="t-section-header">
+      <div class="t-num">4</div>
+      <h2>Segundo Premio — Video Promocional</h2>
+    </div>
+
+    <div class="prize-block silver">
+      <div class="prize-label">Segundo Lugar</div>
+      <h3>Producción de Video Promocional para Redes Sociales</h3>
+
+      <p><strong style="color:var(--white);">Descripción del premio:</strong></p>
+      <ul class="t-list">
+        <li>Sesión de grabación presencial de hasta <strong style="color:var(--white);">3 horas</strong> en la ubicación del emprendedor o lugar acordado.</li>
+        <li>Video final editado de <strong style="color:var(--white);">1 minuto</strong>, optimizado para publicación en redes sociales (Instagram Reels, TikTok, Facebook).</li>
+        <li>Formato vertical (9:16) para máximo rendimiento en plataformas móviles.</li>
+        <li>1 ronda de ajustes menores incluida (texto en pantalla, color, música).</li>
+        <li>Entrega del archivo en alta calidad por enlace digital (Google Drive o WeTransfer).</li>
+      </ul>
+
+      <p><strong style="color:var(--white);">Condiciones de la sesión de grabación:</strong></p>
+      <ul class="t-list">
+        <li>La sesión de grabación debe ser agendada dentro de los <strong style="color:var(--white);">15 días calendario</strong> siguientes a la notificación de ganador.</li>
+        <li>La duración máxima de la sesión es de 3 horas, sin posibilidad de extensión.</li>
+        <li>La grabación se realiza <strong style="color:var(--white);">dentro de la ciudad de Manizales</strong>. El emprendedor debe tener lista la locación, productos, vestuario o material necesario para la fecha acordada.</li>
+        <li>Si la ubicación del emprendedor se encuentra <strong style="color:var(--white);">fuera del perímetro urbano de Manizales</strong> (municipios aledaños, corregimientos u otras ciudades), la ejecución de la grabación estará sujeta a una <strong style="color:var(--white);">negociación previa</strong> entre el ganador y el equipo de Biwov_ para definir condiciones de desplazamiento, costos adicionales y viabilidad logística. En caso de no llegar a un acuerdo, el premio podrá ser reemplazado por la <strong style="color:var(--white);">asesoría estratégica de marketing digital</strong> (tercer premio equivalente).</li>
+        <li>Si el ganador cancela la sesión sin previo aviso de mínimo <strong style="color:var(--white);">48 horas</strong>, el premio se dará por terminado y será otorgado a otro participante.</li>
+        <li>El emprendedor puede sugerir el estilo musical (género o mood); Biwov_ utilizará música libre de derechos (royalty-free) para evitar problemas de copyright en redes sociales.</li>
+      </ul>
+
+      <p><strong style="color:var(--white);">Entrega y revisiones:</strong></p>
+      <ul class="t-list">
+        <li>El video editado será entregado en un plazo de <strong style="color:var(--white);">5 a 7 días hábiles</strong> después de la sesión de grabación.</li>
+        <li>Se incluye 1 ronda de ajustes menores. Cambios estructurales (re-grabación, cambio de concepto) no están incluidos.</li>
+        <li>La grabación adicional o un segundo video no hacen parte del premio.</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <strong>Nota sobre información:</strong> Si el ganador del segundo premio no suministra la información necesaria (disponibilidad, ubicación, brief del negocio) dentro de los 15 días calendario posteriores a la notificación, el premio se transfiere a otro participante.
+    </div>
+  </div>
+
+
+  <!-- 5. TERCER PREMIO -->
+  <div class="t-section" id="s5">
+    <div class="t-section-header">
+      <div class="t-num">5</div>
+      <h2>Tercer Premio — Asesoría de Marketing Digital</h2>
+    </div>
+
+    <div class="prize-block bronze">
+      <div class="prize-label">Tercer Lugar</div>
+      <h3>Asesoría Estratégica Personalizada de Marketing Digital</h3>
+
+      <p><strong style="color:var(--white);">Descripción del premio:</strong></p>
+      <ul class="t-list">
+        <li>1 (una) hora de asesoría individual con el equipo estratégico de Biwov_.</li>
+        <li>Análisis de la situación digital actual del negocio (redes, publicidad, presencia web).</li>
+        <li>Plan de acción concreto con recomendaciones prácticas y accionables.</li>
+        <li>Sesión realizada por <strong style="color:var(--white);">videollamada (Zoom o Google Meet)</strong>.</li>
+        <li>Resumen escrito de los puntos clave tratados durante la sesión.</li>
+      </ul>
+
+      <p><strong style="color:var(--white);">Condiciones:</strong></p>
+      <ul class="t-list">
+        <li>La sesión debe ser agendada dentro de los <strong style="color:var(--white);">15 días calendario</strong> siguientes a la notificación de ganador.</li>
+        <li>La asesoría tiene una duración de exactamente 1 hora. No es extensible.</li>
+        <li>La sesión no es transferible a otra persona ni canjeable por dinero o servicios equivalentes.</li>
+        <li>La grabación de la sesión requiere el consentimiento mutuo de ambas partes.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 6. CONDICIONES GENERALES -->
+  <div class="t-section" id="s6">
+    <div class="t-section-header">
+      <div class="t-num">6</div>
+      <h2>Condiciones generales (aplica a los 3 premios)</h2>
+    </div>
+
+    <ul class="t-list">
+      <li>Los premios son <strong style="color:var(--white);">personales e intransferibles</strong>. No pueden ser cedidos, vendidos ni canjeados por dinero en efectivo.</li>
+      <li>Si el ganador no puede ser contactado dentro de las <strong style="color:var(--white);">48 horas</strong> siguientes al anuncio (por las redes sociales o el correo registrado en el formulario), el premio pasará al siguiente participante elegible.</li>
+      <li>Para todos los premios, el ganador tiene <strong style="color:var(--white);">15 días calendario</strong> para iniciar el proceso. El incumplimiento transfiere el premio a otro emprendedor.</li>
+      <li>Biwov_ se reserva el derecho de verificar que el ganador cumple con todos los requisitos de participación antes de hacer entrega del premio.</li>
+      <li>Los participantes que hayan interactuado directamente con el equipo de Biwov_ durante la feria tienen las mismas condiciones que los participantes externos.</li>
+      <li>Biwov_ puede utilizar el nombre del negocio ganador y los resultados del trabajo (con autorización del ganador) como caso de estudio y contenido de portafolio.</li>
+      <li>Estos términos están sujetos a las leyes de la República de Colombia.</li>
+    </ul>
+
+    <div class="note-box">
+      <strong>Sobre la transferencia del premio:</strong> Si por cualquier causa un ganador no puede recibir su premio (incumple los requisitos, no responde, rechaza el premio o no aporta información), Biwov_ seleccionará al siguiente participante elegible del listado del formulario y le notificará. Este proceso puede repetirse hasta encontrar un ganador que cumpla todas las condiciones.
+    </div>
+  </div>
+
+
+  <!-- 7. ANUNCIO DE GANADORES -->
+  <div class="t-section" id="s7">
+    <div class="t-section-header">
+      <div class="t-num">7</div>
+      <h2>Anuncio de ganadores</h2>
+    </div>
+
+    <ul class="t-list">
+      <li>El sorteo se realizará el <strong style="color:var(--white);">sábado 20 de junio de 2026</strong>.</li>
+      <li>Los 3 ganadores serán anunciados públicamente a través de las cuentas de Instagram <strong style="color:var(--white);">@biwov_</strong>, <strong style="color:var(--white);">@kathedigital__</strong> y <strong style="color:var(--white);">@lauragcreativa</strong>.</li>
+      <li>Los ganadores también serán notificados por el medio de contacto registrado en el formulario (correo electrónico o número de teléfono).</li>
+      <li>El orden de los premios (1ro, 2do y 3ro) se definirá mediante el proceso de selección aleatoria del sorteo.</li>
+    </ul>
+
+    <div class="info-box">
+      <strong>Transparencia:</strong> El proceso de selección es aleatorio entre todos los participantes válidos. Biwov_ se compromete a realizar el sorteo de forma honesta e imparcial.
+    </div>
+  </div>
+
+
+  <!-- 8. RESPONSABILIDADES -->
+  <div class="t-section" id="s8">
+    <div class="t-section-header">
+      <div class="t-num">8</div>
+      <h2>Responsabilidades y limitaciones</h2>
+    </div>
+
+    <ul class="t-list">
+      <li>Biwov_ no se hace responsable por fallas técnicas en Instagram o Google Forms que impidan la participación.</li>
+      <li>La calidad del resultado final (página web o video) depende directamente de la información, materiales y disponibilidad que el ganador proporcione. Si la información entregada es incompleta, el resultado puede verse afectado.</li>
+      <li>Biwov_ no garantiza resultados específicos de ventas, tráfico o posicionamiento a partir del uso de los premios entregados. Los premios son herramientas; los resultados dependen de múltiples factores externos.</li>
+      <li>Biwov_ se reserva el derecho de modificar estos términos con aviso previo de al menos 48 horas antes del sorteo, comunicando los cambios a través de sus redes sociales.</li>
+    </ul>
+
+    <div class="info-box">
+      <strong>¿Tienes preguntas?</strong> Puedes contactarnos por WhatsApp al
+      <a href="https://api.whatsapp.com/send/?phone=573133125157&text=Hola+Biwov_&type=phone_number&app_absent=0" target="_blank" style="color:var(--blue); font-weight:700;">+57 313 312 5157</a>
+      o escribirnos a <strong>biwov.com@gmail.com</strong>.
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.8rem; color:var(--muted);">
+      Última actualización: 16 de junio de 2026.
+    </p>
+  </div>
+
+  <a href="sorteo-feria.html" class="back-link">← Volver al sorteo y participar</a>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="logo">biwov_</a>
+  <small>© 2026 Biwov_. Colombia · biwov.com@gmail.com</small>
+  <ul class="f-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="sorteo-feria.html">Sorteo Feria 2026</a></li>
+    <li><a href="https://api.whatsapp.com/send/?phone=573133125157&text=Hola+Biwov_&type=phone_number&app_absent=0" target="_blank">WhatsApp</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
