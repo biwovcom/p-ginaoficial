@@ -738,6 +738,90 @@
 
     .ticket-card.open .ticket-toggle .toggle-icon { transform: rotate(180deg); }
 
+    /* ── AVISO SEGUIR CUENTAS (hero) ── */
+    .hero-must-follow {
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      background: rgba(217,79,61,0.1);
+      border: 1.5px solid rgba(217,79,61,0.45);
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      text-align: center;
+    }
+
+    .hmf-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f07060;
+      margin-bottom: 0.75rem;
+    }
+
+    .hmf-accounts {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
+
+    .hmf-handle {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(245,200,66,0.1);
+      border: 1px solid rgba(245,200,66,0.25);
+      padding: 0.28rem 0.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hmf-handle:hover { background: rgba(245,200,66,0.22); }
+
+    .hmf-text {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    /* Flecha scroll */
+    .scroll-hint {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .scroll-hint:hover { color: var(--gold); }
+
+    .scroll-arrow {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      animation: bounceDown 1.6s ease-in-out infinite;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }
+
     /* ── PARTICIPAR SECTION ── */
     #participar {
       padding: 5.5rem 6%;
@@ -1133,11 +1217,27 @@
       </div>
     </div>
 
+    <!-- AVISO OBLIGATORIO -->
+    <div class="hero-must-follow fade-up">
+      <div class="hmf-title">⚠️ Paso obligatorio antes de llenar el formulario</div>
+      <div class="hmf-accounts">
+        <a href="https://instagram.com/kathedigital__" target="_blank" class="hmf-handle">@kathedigital__</a>
+        <a href="https://instagram.com/lauragcreativa" target="_blank" class="hmf-handle">@lauragcreativa</a>
+        <a href="https://instagram.com/biwov_" target="_blank" class="hmf-handle">@biwov_</a>
+      </div>
+      <div class="hmf-text">Si llenas el formulario sin seguir estas 3 cuentas, tu participación <strong style="color:#f07060;">no es válida</strong>.</div>
+    </div>
+
+    <!-- FLECHA SCROLL -->
+    <a href="#participar" class="scroll-hint fade-up">
+      Ver cómo participar
+      <div class="scroll-arrow">↓</div>
+    </a>
+
     <div class="hero-btns fade-up">
       <a href="https://forms.gle/WQveLdeT2MRfJnDT9" target="_blank" class="btn-gold">
-        Llenar el formulario →
+        Ya seguí las 3 cuentas → Llenar formulario
       </a>
-      <a href="#premios" class="btn-ghost">Ver los premios</a>
     </div>
   </div>
 </section>
