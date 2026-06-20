@@ -1043,6 +1043,15 @@
 
       <!-- Visible para el público -->
       <div class="lock-msg" id="lock-msg">🔒 El sorteo es controlado en vivo por Biwov_</div>
+
+      <!-- Botón de acceso admin -->
+      <button id="btn-admin-login" onclick="abrirModal()"
+        style="width:100%;padding:0.7rem;background:transparent;color:rgba(255,255,255,0.35);
+               font-family:'Poppins',sans-serif;font-size:0.78rem;font-weight:600;
+               border:1px solid rgba(255,255,255,0.1);border-radius:10px;cursor:pointer;
+               transition:border-color 0.2s,color 0.2s;">
+        🔑 Iniciar sesión
+      </button>
     </div>
 
   </div>
@@ -1104,9 +1113,6 @@
 </section>
 
 
-<!-- ADMIN LINK — casi invisible, solo tú sabes que está aquí -->
-<span class="admin-link" onclick="abrirModal()">· · ·</span>
-
 <!-- FOOTER -->
 <footer>
   <a href="index.html" class="logo">biwov_</a>
@@ -1152,18 +1158,20 @@ function verificarAdmin() {
 }
 
 function activarModoAdmin() {
-  document.getElementById('btn-girar').style.display = 'block';
-  document.getElementById('lock-msg').style.display  = 'none';
-  document.getElementById('admin-badge').style.display = 'block';
+  document.getElementById('btn-girar').style.display      = 'block';
+  document.getElementById('lock-msg').style.display       = 'none';
+  document.getElementById('btn-admin-login').style.display = 'none';
+  document.getElementById('admin-badge').style.display    = 'block';
 }
 
 function cerrarSesionAdmin() {
   if (!confirm('¿Cerrar sesión de administrador?')) return;
   isAdmin = false;
-  document.getElementById('btn-girar').style.display = 'none';
-  document.getElementById('lock-msg').style.display  = 'block';
-  document.getElementById('admin-badge').style.display = 'none';
-  document.getElementById('btn-reset').style.display = 'none';
+  document.getElementById('btn-girar').style.display       = 'none';
+  document.getElementById('lock-msg').style.display        = 'block';
+  document.getElementById('btn-admin-login').style.display = 'block';
+  document.getElementById('admin-badge').style.display     = 'none';
+  document.getElementById('btn-reset').style.display       = 'none';
 }
 
 // Cerrar modal al hacer clic fuera
