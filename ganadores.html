@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteo en Vivo — Biwov_ | 4ta Feria Empresarial 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:    #060E1F;
+      --dark:  #0D3B66;
+      --blue:  #3299CC;
+      --gold:  #F5C842;
+      --gold2: #E8A020;
+      --red:   #D94F3D;
+      --white: #ffffff;
+      --muted: rgba(255,255,255,0.55);
+      --border: rgba(245,200,66,0.25);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo {
+      font-family: 'MuseoModerno', sans-serif;
+      font-weight: 700;
+      font-size: 1.55rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6%;
+      background: rgba(6,14,31,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(50,153,204,0.15);
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+    .nav-cta {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 0.6rem 1.35rem;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--gold2); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 62px; left: 0; right: 0;
+      background: rgba(6,14,31,0.98);
+      backdrop-filter: blur(16px);
+      padding: 1.5rem 6%;
+      border-bottom: 1px solid rgba(50,153,204,0.15);
+      z-index: 99;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ── CONFETTI ── */
+    .confetti-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .c-piece {
+      position: absolute;
+      width: 8px; height: 12px;
+      border-radius: 2px;
+      opacity: 0;
+      animation: confettiFall linear infinite;
+    }
+
+    @keyframes confettiFall {
+      0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(110vh) rotate(720deg); }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 6% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(50,153,204,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(245,200,66,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 35% at 10% 80%, rgba(217,79,61,0.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f07060;
+      border: 1px solid rgba(217,79,61,0.4);
+      background: rgba(217,79,61,0.1);
+      padding: 0.38rem 1rem;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+    }
+
+    .live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #f07060;
+      animation: livePulse 1.2s infinite;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.6); }
+    }
+
+    #hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    #hero h1 .gold { color: var(--gold); }
+    #hero h1 .outline { -webkit-text-stroke: 2px var(--white); color: transparent; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .event-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      background: rgba(245,200,66,0.05);
+      padding: 0.5rem 1.4rem;
+      border-radius: 99px;
+    }
+
+    /* ── CARGA ── */
+    #carga {
+      padding: 2.5rem 6%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .carga-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(50,153,204,0.2);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+    }
+
+    .carga-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .carga-info { display: flex; align-items: center; gap: 1.25rem; }
+
+    .carga-count {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .carga-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+    .carga-label strong { color: var(--white); display: block; font-size: 0.9rem; }
+
+    .carga-btns { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+
+    .btn-csv {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .btn-csv:hover { background: var(--gold2); }
+
+    #csv-input { display: none; }
+
+    .carga-hint {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.5rem;
+    }
+
+    .participantes-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 1rem;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    .p-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.18rem 0.6rem;
+      border-radius: 99px;
+    }
+
+    .p-tag.ganador { color: var(--gold); background: rgba(245,200,66,0.08); border-color: rgba(245,200,66,0.25); }
+
+    /* ── SORTEO MAIN ── */
+    #sorteo {
+      padding: 4rem 6%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sorteo-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    /* SLOT MACHINE */
+    .slot-label {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .slot-outer {
+      position: relative;
+      background: rgba(6,14,31,0.9);
+      border: 2px solid rgba(245,200,66,0.3);
+      border-radius: 20px;
+      height: 340px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(245,200,66,0.06), inset 0 0 30px rgba(0,0,0,0.5);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .slot-outer.spinning {
+      border-color: rgba(245,200,66,0.7);
+      box-shadow: 0 0 60px rgba(245,200,66,0.2), inset 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .slot-outer::before, .slot-outer::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 90px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .slot-outer::before {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(6,14,31,1) 0%, transparent 100%);
+    }
+
+    .slot-outer::after {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(6,14,31,1) 0%, transparent 100%);
+    }
+
+    .slot-highlight {
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 76px;
+      border-top: 1.5px solid rgba(245,200,66,0.5);
+      border-bottom: 1.5px solid rgba(245,200,66,0.5);
+      background: rgba(245,200,66,0.05);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .slot-strip {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slot-item {
+      height: 76px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.5rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .si-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .si-ig {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: 0.2rem;
+    }
+
+    .slot-status {
+      text-align: center;
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      min-height: 1.1rem;
+    }
+
+    /* CONTROL PANEL */
+    .control-panel { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .prize-queue { display: flex; flex-direction: column; gap: 0.65rem; }
+
+    .psi {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .psi.active {
+      border-color: rgba(245,200,66,0.4);
+      background: rgba(245,200,66,0.05);
+    }
+
+    .psi.done {
+      border-color: rgba(50,153,204,0.25);
+      background: rgba(50,153,204,0.04);
+    }
+
+    .psi-medal { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+
+    .psi-info { flex: 1; min-width: 0; }
+
+    .psi-lugar {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .psi-premio {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .psi-winner-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .psi.done .psi-premio { display: none; }
+    .psi.done .psi-winner-name { display: block; }
+
+    .psi-check {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(50,153,204,0.15);
+      color: #7DC8EC;
+      font-size: 0.8rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .psi.done .psi-check { display: flex; }
+
+    .btn-girar {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 28px rgba(245,200,66,0.35);
+    }
+
+    .btn-girar:hover:not(:disabled) {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(245,200,66,0.5);
+    }
+
+    .btn-girar:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .btn-reset {
+      width: 100%;
+      padding: 0.7rem;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: none;
+    }
+
+    .btn-reset:hover { border-color: rgba(217,79,61,0.4); color: #f07060; }
+
+    /* ── GANADORES CARDS ── */
+    #ganadores {
+      padding: 5rem 6%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ganadores-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .ganador-card {
+      border-radius: 16px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .ganador-card.revealed { opacity: 1; transform: translateY(0) scale(1); }
+
+    .ganador-card.placeholder { opacity: 1; transform: none; }
+
+    .gc-header { padding: 2rem 1.5rem 1.5rem; text-align: center; }
+
+    .gc-1 .gc-header { background: linear-gradient(135deg, #2a1a00, #3d2800); }
+    .gc-2 .gc-header { background: linear-gradient(135deg, #0a2a50, #0d3b66); }
+    .gc-3 .gc-header { background: linear-gradient(135deg, #0f1f35, #162840); }
+    .placeholder .gc-header { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; }
+
+    .gc-medal { font-size: 2.8rem; line-height: 1; margin-bottom: 0.75rem; }
+    .gc-ph-icon { font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.25; }
+
+    .gc-place {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+
+    .gc-1 .gc-place { color: var(--gold); }
+    .gc-2 .gc-place { color: #7DC8EC; }
+    .gc-3 .gc-place { color: rgba(255,255,255,0.4); }
+
+    .gc-name { font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 0.3rem; }
+
+    .gc-ig { font-size: 0.78rem; font-weight: 700; }
+    .gc-1 .gc-ig { color: var(--gold); }
+    .gc-2 .gc-ig { color: #7DC8EC; }
+    .gc-3 .gc-ig { color: rgba(255,255,255,0.4); }
+
+    .gc-ph-text { font-size: 0.78rem; color: rgba(255,255,255,0.2); font-weight: 500; padding: 1rem 0; }
+
+    .gc-body { padding: 1.1rem 1.5rem 1.4rem; text-align: center; }
+    .gc-1 .gc-body { background: rgba(245,200,66,0.05); }
+    .gc-2 .gc-body { background: rgba(50,153,204,0.04); }
+    .gc-3 .gc-body { background: rgba(255,255,255,0.02); }
+
+    .gc-prize { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 500; line-height: 1.5; }
+
+    @keyframes winnerPop {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    .winner-pop { animation: winnerPop 0.5s ease; }
+
+    /* ── SECTION HEADERS ── */
+    .s-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.65rem;
+    }
+
+    .s-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .s-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    /* ── HISTORIAL ── */
+    #historial {
+      padding: 5rem 6%;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(50,153,204,0.1);
+    }
+
+    .historial-entry {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .he-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .he-event { font-size: 0.95rem; font-weight: 700; color: var(--white); }
+
+    .he-date {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(245,200,66,0.08);
+      border: 1px solid rgba(245,200,66,0.2);
+      padding: 0.22rem 0.75rem;
+      border-radius: 99px;
+    }
+
+    .he-winners { display: flex; flex-direction: column; gap: 0.55rem; }
+
+    .hw-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      padding: 0.4rem 0;
+    }
+
+    .hw-medal { font-size: 1.1rem; flex-shrink: 0; }
+    .hw-name { font-weight: 700; color: var(--white); flex: 1; }
+    .hw-ig { color: var(--muted); font-weight: 400; font-size: 0.78rem; }
+    .hw-prize { font-size: 0.72rem; color: rgba(255,255,255,0.3); font-weight: 500; text-align: right; }
+
+    .historial-empty {
+      text-align: center;
+      padding: 3rem 0;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.85rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(50,153,204,0.12);
+      padding: 2.25rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer small { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+    .f-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+
+    .f-links a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .f-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .sorteo-layout { grid-template-columns: 1fr; }
+      .ganadores-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      footer { flex-direction: column; text-align: center; }
+      #hero { padding: 7rem 5% 3rem; }
+      .carga-header { flex-direction: column; align-items: flex-start; }
+      .hw-prize { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CONFETTI -->
+<div class="confetti-wrap" id="confetti" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">biwov_</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Servicios</a></li>
+    <li><a href="sorteo-feria.html">Sorteo Feria 2026</a></li>
+    <li><a href="terminos.html">Términos</a></li>
+    <li><a href="ganadores.html" class="active" style="color:var(--gold);">Ganadores</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="https://api.whatsapp.com/send/?phone=573133125157&text=Hola+Biwov_&type=phone_number&app_absent=0" target="_blank" class="nav-cta">Hablemos</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Inicio</a>
+  <a href="index.html#services">Servicios</a>
+  <a href="sorteo-feria.html">Sorteo Feria 2026</a>
+  <a href="terminos.html">Términos y Condiciones</a>
+  <a href="ganadores.html">Ganadores</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="confetti-wrap" id="confetti-hero" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="live-badge"><span class="live-dot"></span>Sorteo en vivo</div>
+    <h1><span class="outline">SORTEO</span><br><span class="gold">EN</span> VIVO</h1>
+    <p class="hero-sub">4ta Feria Empresarial y de Emprendimiento · Manizales 2026</p>
+    <div class="event-meta">📅 Sábado 20 de junio de 2026</div>
+  </div>
+</section>
+
+
+<!-- CARGA PARTICIPANTES -->
+<section id="carga">
+  <div class="carga-box">
+    <div class="carga-header">
+      <div class="carga-info">
+        <div class="carga-count" id="p-count">15</div>
+        <div class="carga-label">
+          <strong>participantes cargados</strong>
+          listos para el sorteo
+        </div>
+      </div>
+      <div class="carga-btns">
+        <label class="btn-csv" for="csv-input">📂 Cargar CSV de Google Sheets</label>
+        <input type="file" id="csv-input" accept=".csv,.CSV">
+      </div>
+    </div>
+    <div class="carga-hint">Exporta desde Google Sheets → Archivo → Descargar → CSV y súbelo aquí</div>
+    <div class="participantes-tags" id="p-tags"></div>
+  </div>
+</section>
+
+
+<!-- SORTEO -->
+<section id="sorteo">
+  <div style="text-align:center; max-width:580px; margin:0 auto;">
+    <div class="s-tag">Sorteo aleatorio</div>
+    <h2 class="s-title">Selección de ganadores</h2>
+    <p class="s-sub">El resultado es 100% aleatorio. Presiona Girar para cada premio.</p>
+  </div>
+
+  <div class="sorteo-layout">
+
+    <!-- SLOT MACHINE -->
+    <div>
+      <div class="slot-label" id="slot-label">Listo para iniciar</div>
+      <div class="slot-outer" id="slot-outer">
+        <div class="slot-highlight"></div>
+        <div class="slot-strip" id="slot-strip"></div>
+      </div>
+      <div class="slot-status" id="slot-status">Presiona "Girar" para comenzar el sorteo</div>
+    </div>
+
+    <!-- CONTROL PANEL -->
+    <div class="control-panel">
+      <div class="prize-queue">
+
+        <div class="psi active" id="psi-1">
+          <div class="psi-medal">🥇</div>
+          <div class="psi-info">
+            <div class="psi-lugar">Primer lugar</div>
+            <div class="psi-premio">Página Web + SEO + Asesoría</div>
+            <div class="psi-winner-name" id="pw-1"></div>
+          </div>
+          <div class="psi-check">✓</div>
+        </div>
+
+        <div class="psi" id="psi-2">
+          <div class="psi-medal">🥈</div>
+          <div class="psi-info">
+            <div class="psi-lugar">Segundo lugar</div>
+            <div class="psi-premio">Video Promocional para Redes</div>
+            <div class="psi-winner-name" id="pw-2"></div>
+          </div>
+          <div class="psi-check">✓</div>
+        </div>
+
+        <div class="psi" id="psi-3">
+          <div class="psi-medal">🥉</div>
+          <div class="psi-info">
+            <div class="psi-lugar">Tercer lugar</div>
+            <div class="psi-premio">Asesoría de Marketing Digital</div>
+            <div class="psi-winner-name" id="pw-3"></div>
+          </div>
+          <div class="psi-check">✓</div>
+        </div>
+
+      </div>
+
+      <button class="btn-girar" id="btn-girar" onclick="girar()">🎰 GIRAR — 1er Lugar</button>
+      <button class="btn-reset" id="btn-reset" onclick="resetSorteo()">↺ Reiniciar sorteo</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- GANADORES -->
+<section id="ganadores">
+  <div style="text-align:center; max-width:580px; margin:0 auto;">
+    <div class="s-tag">Resultados</div>
+    <h2 class="s-title">Los ganadores</h2>
+    <p class="s-sub">4ta Feria Empresarial de Manizales · 20 de junio de 2026</p>
+  </div>
+
+  <div class="ganadores-grid">
+    <div class="ganador-card gc-1 placeholder" id="gc-1">
+      <div class="gc-header"><div class="gc-ph-icon">🥇</div><div class="gc-ph-text">Pendiente...</div></div>
+    </div>
+    <div class="ganador-card gc-2 placeholder" id="gc-2">
+      <div class="gc-header"><div class="gc-ph-icon">🥈</div><div class="gc-ph-text">Pendiente...</div></div>
+    </div>
+    <div class="ganador-card gc-3 placeholder" id="gc-3">
+      <div class="gc-header"><div class="gc-ph-icon">🥉</div><div class="gc-ph-text">Pendiente...</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HISTORIAL -->
+<section id="historial">
+  <div class="s-tag">Historial</div>
+  <h2 class="s-title">Sorteos anteriores</h2>
+  <p class="s-sub">Registramos cada sorteo. La transparencia es nuestra prioridad.</p>
+
+  <!-- Los resultados de hoy se verán en la sección de arriba. -->
+  <!-- Para agregar sorteos futuros, copia el bloque .historial-entry de abajo -->
+
+  <div id="historial-lista">
+    <!-- EJEMPLO — descomenta y edita cuando tengas ganadores:
+    <div class="historial-entry">
+      <div class="he-header">
+        <span class="he-event">4ta Feria Empresarial · Manizales</span>
+        <span class="he-date">20 Jun 2026</span>
+      </div>
+      <div class="he-winners">
+        <div class="hw-row">
+          <span class="hw-medal">🥇</span>
+          <span class="hw-name">Nombre Ganador 1</span>
+          <span class="hw-ig">@handle</span>
+          <span class="hw-prize">Página Web + SEO</span>
+        </div>
+        <div class="hw-row">
+          <span class="hw-medal">🥈</span>
+          <span class="hw-name">Nombre Ganador 2</span>
+          <span class="hw-ig">@handle</span>
+          <span class="hw-prize">Video Promocional</span>
+        </div>
+        <div class="hw-row">
+          <span class="hw-medal">🥉</span>
+          <span class="hw-name">Nombre Ganador 3</span>
+          <span class="hw-ig">@handle</span>
+          <span class="hw-prize">Asesoría Digital</span>
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="historial-empty" id="historial-empty">
+      El primer sorteo de Biwov_ se realiza hoy, 20 de junio de 2026.<br>
+      <span style="opacity:0.5;">Los resultados quedarán guardados aquí.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="logo">biwov_</a>
+  <small>© 2026 Biwov_ · Colombia · biwov.com@gmail.com</small>
+  <ul class="f-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="sorteo-feria.html">Sorteo Feria 2026</a></li>
+    <li><a href="terminos.html">Términos</a></li>
+  </ul>
+</footer>
+
+
+<script>
+// ─── PARTICIPANTES ───────────────────────────────────────────────
+let participantes = [
+  { nombre: "Maria del Pilar Muñoz",      ig: "@jabue.lc" },
+  { nombre: "Anamaria Venegas",           ig: "@flyxy.co" },
+  { nombre: "Laura Manuela Espitia G",    ig: "@fluxy.co" },
+  { nombre: "Konny Gutiérrez",            ig: "@codadesign13" },
+  { nombre: "Simón Giraldo Buitrago",     ig: "@chocolatesantoaroma" },
+  { nombre: "Alejandra Arias",            ig: "@goldin.art" },
+  { nombre: "Leonardo Valencia Soto",     ig: "@coffelaberinto" },
+  { nombre: "Andrés David Trujillo",      ig: "@sr.pinmanizales" },
+  { nombre: "Maria Cristina Cardona M",   ig: "@cafevazca.eco" },
+  { nombre: "Alexander Salgado Soto",     ig: "@casade_irene" },
+  { nombre: "Daniela Quintero",           ig: "@valamzia" },
+  { nombre: "Valentina Campuzano",        ig: "@entrepinos" },
+  { nombre: "Juan David Patiño Tejada",   ig: "@ecolomadesign" },
+  { nombre: "Yised Hernández Morales",    ig: "@lacasadelucia.col" },
+  { nombre: "Maria Teresa Giraldo",       ig: "@maristojoya" },
+  // Carga el CSV para añadir los participantes restantes
+];
+
+const PREMIOS = [
+  { lugar: "1er Lugar", emoji: "🥇", premio: "Página Web + SEO + Asesoría Estratégica" },
+  { lugar: "2do Lugar", emoji: "🥈", premio: "Video Promocional para Redes Sociales" },
+  { lugar: "3er Lugar", emoji: "🥉", premio: "Asesoría de Marketing Digital" },
+];
+
+let ganadores    = [];
+let currentRound = 0;
+let isSpinning   = false;
+
+const ITEM_H    = 76;
+const SLOT_HALF = 170; // 340 / 2
+
+// ─── INIT ────────────────────────────────────────────────────────
+function init() {
+  renderTags();
+  updateCount();
+  populateSlotIdle();
+}
+
+function renderTags() {
+  const container = document.getElementById('p-tags');
+  container.innerHTML = participantes.map(p => {
+    const esGanador = ganadores.some(g => g.nombre === p.nombre);
+    return `<span class="p-tag ${esGanador ? 'ganador' : ''}">${p.nombre}</span>`;
+  }).join('');
+}
+
+function updateCount() {
+  document.getElementById('p-count').textContent = participantes.length;
+}
+
+function populateSlotIdle() {
+  const strip = document.getElementById('slot-strip');
+  strip.style.transition = 'none';
+  strip.innerHTML = '';
+  const sample = participantes.slice(0, Math.min(8, participantes.length));
+  sample.forEach(p => {
+    strip.appendChild(makeSlotItem(p));
+  });
+  strip.style.transform = `translateY(${SLOT_HALF - ITEM_H / 2}px)`;
+}
+
+function makeSlotItem(p) {
+  const el = document.createElement('div');
+  el.className = 'slot-item';
+  el.innerHTML = `<div class="si-name">${p.nombre}</div><div class="si-ig">${p.ig || ''}</div>`;
+  return el;
+}
+
+// ─── CSV IMPORT ──────────────────────────────────────────────────
+document.getElementById('csv-input').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const lines = ev.target.result.split('\n').filter(l => l.trim());
+    const nuevos = [];
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCSVLine(lines[i]);
+      const nombre = cols[1]?.trim().replace(/^"|"$/g, '');
+      const ig     = cols[4]?.trim().replace(/^"|"$/g, '') || '';
+      if (nombre && nombre.length > 1) nuevos.push({ nombre, ig });
+    }
+    if (nuevos.length > 0) {
+      participantes = nuevos;
+      ganadores = [];
+      currentRound = 0;
+      isSpinning = false;
+      renderTags();
+      updateCount();
+      populateSlotIdle();
+      resetUI();
+      document.getElementById('slot-status').textContent =
+        `✓ ${nuevos.length} participantes cargados correctamente`;
+    } else {
+      document.getElementById('slot-status').textContent =
+        'No se encontraron participantes en el archivo CSV.';
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+});
+
+function parseCSVLine(line) {
+  const result = [];
+  let inQ = false, cur = '';
+  for (const ch of line) {
+    if (ch === '"') { inQ = !inQ; }
+    else if (ch === ',' && !inQ) { result.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  result.push(cur);
+  return result;
+}
+
+// ─── GIRAR ───────────────────────────────────────────────────────
+function girar() {
+  if (isSpinning || currentRound >= 3) return;
+
+  const remaining = participantes.filter(p => !ganadores.some(g => g.nombre === p.nombre));
+  if (remaining.length === 0) {
+    alert('No hay participantes disponibles.');
+    return;
+  }
+
+  isSpinning = true;
+  document.getElementById('btn-girar').disabled = true;
+  document.getElementById('slot-label').textContent =
+    `Sorteando ${PREMIOS[currentRound].lugar}...`;
+  document.getElementById('slot-outer').classList.add('spinning');
+
+  // Pick winner before animation
+  const winner = remaining[Math.floor(Math.random() * remaining.length)];
+
+  animateSlot(winner, remaining, () => {
+    document.getElementById('slot-outer').classList.remove('spinning');
+
+    // Mark done in panel
+    const psi = document.getElementById(`psi-${currentRound + 1}`);
+    psi.classList.remove('active');
+    psi.classList.add('done');
+    document.getElementById(`pw-${currentRound + 1}`).textContent = winner.nombre;
+
+    // Reveal winner card
+    ganadores.push(winner);
+    revealCard(currentRound, winner);
+    renderTags();
+
+    currentRound++;
+    isSpinning = false;
+
+    if (currentRound < 3) {
+      document.getElementById(`psi-${currentRound + 1}`).classList.add('active');
+      const btn = document.getElementById('btn-girar');
+      btn.disabled = false;
+      btn.textContent = `🎰 GIRAR — ${PREMIOS[currentRound].lugar}`;
+      document.getElementById('slot-label').textContent = 'Listo para siguiente';
+      document.getElementById('slot-status').textContent =
+        `✓ Ganador: ${winner.nombre}. Presiona Girar para continuar.`;
+    } else {
+      document.getElementById('btn-girar').textContent = '🎉 ¡Sorteo completado!';
+      document.getElementById('slot-label').textContent = '¡Finalizado!';
+      document.getElementById('slot-status').textContent =
+        '¡Los 3 ganadores han sido seleccionados! 🎊';
+      document.getElementById('btn-reset').style.display = 'block';
+      launchConfetti();
+    }
+  });
+}
+
+function animateSlot(winner, remaining, onDone) {
+  const strip  = document.getElementById('slot-strip');
+  const BEFORE = 42; // items before winner
+  const AFTER  = 8;  // items after (so no parece el último)
+
+  // Build strip: random antes, ganador al centro, random después
+  strip.innerHTML = '';
+
+  const pool = remaining.length > 1
+    ? remaining.filter(p => p.nombre !== winner.nombre)
+    : remaining;
+
+  function rnd() { return pool[Math.floor(Math.random() * pool.length)]; }
+
+  for (let i = 0; i < BEFORE; i++) strip.appendChild(makeSlotItem(rnd()));
+  strip.appendChild(makeSlotItem(winner)); // ganador en posición BEFORE
+  for (let i = 0; i < AFTER;  i++) strip.appendChild(makeSlotItem(rnd()));
+
+  // Reset posición SIN transición + forzar reflow
+  strip.style.transition = 'none';
+  strip.style.transform  = 'translateY(0)';
+  void strip.offsetHeight; // fuerza reflow para que el browser aplique el reset
+
+  // Posición final: centrar el ganador en la ventana
+  const winnerCenterY = BEFORE * ITEM_H + ITEM_H / 2;
+  const finalY        = SLOT_HALF - winnerCenterY;
+
+  // Lanzar animación en el siguiente frame
+  requestAnimationFrame(() => {
+    strip.style.transition = 'transform 5s cubic-bezier(0.1, 0.9, 0.25, 1)';
+    strip.style.transform  = `translateY(${finalY}px)`;
+  });
+
+  setTimeout(onDone, 5500);
+}
+
+// ─── REVEAL CARD ─────────────────────────────────────────────────
+function revealCard(round, winner) {
+  const card = document.getElementById(`gc-${round + 1}`);
+  const medals  = ['🥇', '🥈', '🥉'];
+  const places  = ['Primer Lugar', 'Segundo Lugar', 'Tercer Lugar'];
+  const classes = ['gc-1', 'gc-2', 'gc-3'];
+
+  card.className = `ganador-card ${classes[round]}`;
+  card.innerHTML = `
+    <div class="gc-header">
+      <div class="gc-medal">${medals[round]}</div>
+      <div class="gc-place">${places[round]}</div>
+      <div class="gc-name">${winner.nombre}</div>
+      <div class="gc-ig">${winner.ig}</div>
+    </div>
+    <div class="gc-body">
+      <div class="gc-prize">${PREMIOS[round].premio}</div>
+    </div>
+  `;
+
+  setTimeout(() => {
+    card.classList.add('revealed', 'winner-pop');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => card.classList.remove('winner-pop'), 600);
+  }, 200);
+}
+
+// ─── RESET ───────────────────────────────────────────────────────
+function resetUI() {
+  document.getElementById('btn-girar').disabled  = false;
+  document.getElementById('btn-girar').textContent = '🎰 GIRAR — 1er Lugar';
+  document.getElementById('btn-reset').style.display = 'none';
+  document.getElementById('slot-label').textContent  = 'Listo para iniciar';
+  document.getElementById('slot-status').textContent = 'Presiona "Girar" para comenzar el sorteo';
+
+  for (let i = 1; i <= 3; i++) {
+    const psi = document.getElementById(`psi-${i}`);
+    psi.classList.remove('active', 'done');
+    document.getElementById(`pw-${i}`).textContent = '';
+  }
+  document.getElementById('psi-1').classList.add('active');
+
+  const medals = ['🥇', '🥈', '🥉'];
+  for (let i = 1; i <= 3; i++) {
+    const card = document.getElementById(`gc-${i}`);
+    card.className = `ganador-card gc-${i} placeholder`;
+    card.innerHTML = `<div class="gc-header"><div class="gc-ph-icon">${medals[i-1]}</div><div class="gc-ph-text">Pendiente...</div></div>`;
+  }
+}
+
+function resetSorteo() {
+  if (!confirm('¿Reiniciar el sorteo? Se perderán los ganadores actuales.')) return;
+  ganadores    = [];
+  currentRound = 0;
+  isSpinning   = false;
+  renderTags();
+  populateSlotIdle();
+  resetUI();
+}
+
+// ─── CONFETTI BURST ──────────────────────────────────────────────
+function launchConfetti() {
+  const wrap = document.getElementById('confetti-hero');
+  const COLORS = ['#F5C842','#3299CC','#D94F3D','#ffffff','#E8A020','#7DC8EC'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'c-piece';
+    el.style.left              = Math.random() * 100 + 'vw';
+    el.style.width             = (6 + Math.random() * 6) + 'px';
+    el.style.height            = (10 + Math.random() * 8) + 'px';
+    el.style.background        = COLORS[Math.floor(Math.random() * COLORS.length)];
+    el.style.animationDuration = (3 + Math.random() * 4) + 's';
+    el.style.animationDelay    = (Math.random() * 2) + 's';
+    el.style.borderRadius      = Math.random() > 0.5 ? '50%' : '2px';
+    wrap.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+  }
+}
+
+// ─── NAV & CONFETTI ──────────────────────────────────────────────
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+
+const COLORS = ['#F5C842','#3299CC','#D94F3D','#ffffff','#E8A020','#7DC8EC'];
+const bgWrap  = document.getElementById('confetti');
+for (let i = 0; i < 25; i++) {
+  const el = document.createElement('div');
+  el.className = 'c-piece';
+  el.style.left              = Math.random() * 100 + 'vw';
+  el.style.background        = COLORS[Math.floor(Math.random() * COLORS.length)];
+  el.style.animationDuration = (5 + Math.random() * 6) + 's';
+  el.style.animationDelay    = (Math.random() * 6) + 's';
+  el.style.borderRadius      = Math.random() > 0.5 ? '50%' : '2px';
+  bgWrap.appendChild(el);
+}
+
+init();
+</script>
+</body>
+</html>
