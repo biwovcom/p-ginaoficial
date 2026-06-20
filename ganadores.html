@@ -860,6 +860,46 @@
       font-size: 0.85rem;
     }
 
+    .btn-del-historial {
+      background: transparent;
+      border: 1px solid rgba(217,79,61,0.3);
+      color: rgba(217,79,61,0.6);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: none;
+    }
+
+    .admin-activo .btn-del-historial { display: inline-block; }
+    .btn-del-historial:hover { background: rgba(217,79,61,0.12); color: #f07060; }
+
+    /* Campo nombre evento (admin) */
+    .evento-input-wrap {
+      display: none;
+      margin-bottom: 0.75rem;
+    }
+
+    .admin-activo .evento-input-wrap { display: block; }
+
+    .evento-input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,200,66,0.2);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      outline: none;
+    }
+
+    .evento-input::placeholder { color: rgba(255,255,255,0.3); }
+    .evento-input:focus { border-color: rgba(245,200,66,0.5); }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid rgba(50,153,204,0.12);
@@ -1038,6 +1078,13 @@
       </div>
 
       <!-- Visible solo para admin -->
+      <!-- Nombre del evento (solo admin lo ve) -->
+      <div class="evento-input-wrap">
+        <input class="evento-input" id="evento-nombre"
+          placeholder="Nombre del sorteo (ej: 4ta Feria Empresarial)"
+          value="4ta Feria Empresarial · Manizales">
+      </div>
+
       <button class="btn-girar" id="btn-girar" onclick="girar()" style="display:none;">🎰 GIRAR — 1er Lugar</button>
       <button class="btn-reset" id="btn-reset" onclick="resetSorteo()">↺ Reiniciar sorteo</button>
 
@@ -1090,25 +1137,7 @@
   <!-- Para agregar sorteos futuros, copia el bloque .historial-entry de abajo -->
 
   <div id="historial-lista">
-
-    <!-- ══ SORTEO 1 — 4ta Feria Empresarial ══
-         Después del sorteo, reemplaza los textos entre comillas con los ganadores reales
-         y elimina esta línea de comentario. -->
-    <div class="historial-entry" id="he-20jun2026">
-      <div class="he-header">
-        <span class="he-event">4ta Feria Empresarial y de Emprendimiento · Manizales</span>
-        <span class="he-date">20 Jun 2026</span>
-      </div>
-      <div class="he-winners" id="historial-winners-1">
-        <!-- Se llenan automáticamente al terminar el sorteo, o edita manualmente aquí -->
-        <div class="hw-row" style="color:rgba(255,255,255,0.25); font-size:0.8rem; justify-content:center;">
-          Sorteo en proceso — los ganadores aparecerán aquí al finalizar
-        </div>
-      </div>
-    </div>
-
-    <!-- PARA FUTUROS SORTEOS: copia el bloque .historial-entry de arriba y pégalo aquí -->
-
+    <!-- Generado automáticamente por JavaScript desde localStorage -->
   </div>
 </section>
 
@@ -1158,10 +1187,12 @@ function verificarAdmin() {
 }
 
 function activarModoAdmin() {
-  document.getElementById('btn-girar').style.display      = 'block';
-  document.getElementById('lock-msg').style.display       = 'none';
+  document.getElementById('btn-girar').style.display       = 'block';
+  document.getElementById('lock-msg').style.display        = 'none';
   document.getElementById('btn-admin-login').style.display = 'none';
-  document.getElementById('admin-badge').style.display    = 'block';
+  document.getElementById('admin-badge').style.display     = 'block';
+  document.getElementById('historial-lista').classList.add('admin-activo');
+  renderHistorial();
 }
 
 function cerrarSesionAdmin() {
@@ -1172,6 +1203,8 @@ function cerrarSesionAdmin() {
   document.getElementById('btn-admin-login').style.display = 'block';
   document.getElementById('admin-badge').style.display     = 'none';
   document.getElementById('btn-reset').style.display       = 'none';
+  document.getElementById('historial-lista').classList.remove('admin-activo');
+  renderHistorial();
 }
 
 // Cerrar modal al hacer clic fuera
@@ -1217,6 +1250,7 @@ function init() {
   renderTags();
   updateCount();
   populateSlotIdle();
+  renderHistorial();
 }
 
 function renderTags() {
@@ -1447,19 +1481,73 @@ function resetSorteo() {
   resetUI();
 }
 
-// ─── GUARDAR EN HISTORIAL ────────────────────────────────────────
-function guardarEnHistorial() {
-  const medals  = ['🥇', '🥈', '🥉'];
-  const prizes  = ['Página Web + SEO', 'Video Promocional', 'Asesoría Digital'];
-  const hwList  = document.getElementById('historial-winners-1');
-  if (!hwList) return;
+// ─── HISTORIAL CON LOCALSTORAGE ──────────────────────────────────
+const LS_KEY = 'biwov_historial';
 
-  hwList.innerHTML = ganadores.map((g, i) => `
-    <div class="hw-row">
-      <span class="hw-medal">${medals[i]}</span>
-      <span class="hw-name">${g.nombre}</span>
-      <span class="hw-ig">${g.ig}</span>
-      <span class="hw-prize">${prizes[i]}</span>
+function leerHistorial() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+
+function guardarEnHistorial() {
+  const prizes   = ['Página Web + SEO + Asesoría', 'Video Promocional', 'Asesoría de Marketing Digital'];
+  const historial = leerHistorial();
+  const now       = new Date();
+  const fecha     = now.toLocaleDateString('es-CO', { day:'numeric', month:'short', year:'numeric' });
+  const evento    = document.getElementById('evento-nombre')?.value?.trim()
+                    || '4ta Feria Empresarial · Manizales';
+
+  const entrada = {
+    id:        now.getTime(),
+    evento,
+    fecha,
+    ganadores: ganadores.map((g, i) => ({
+      nombre: g.nombre,
+      ig:     g.ig,
+      premio: prizes[i]
+    }))
+  };
+
+  historial.unshift(entrada); // más reciente primero
+  localStorage.setItem(LS_KEY, JSON.stringify(historial));
+  renderHistorial();
+}
+
+function eliminarEntrada(id) {
+  if (!isAdmin) return;
+  if (!confirm('¿Eliminar este registro del historial?')) return;
+  const historial = leerHistorial().filter(e => e.id !== id);
+  localStorage.setItem(LS_KEY, JSON.stringify(historial));
+  renderHistorial();
+}
+
+function renderHistorial() {
+  const historial = leerHistorial();
+  const lista     = document.getElementById('historial-lista');
+  const medals    = ['🥇', '🥈', '🥉'];
+
+  if (historial.length === 0) {
+    lista.innerHTML = `<div class="historial-empty">Aún no hay sorteos registrados.<br>
+      <span style="opacity:0.5;">Los resultados aparecerán aquí al completar el sorteo.</span></div>`;
+    return;
+  }
+
+  lista.innerHTML = historial.map(entry => `
+    <div class="historial-entry">
+      <div class="he-header">
+        <span class="he-event">${entry.evento}</span>
+        <span class="he-date">${entry.fecha}</span>
+        <button class="btn-del-historial" onclick="eliminarEntrada(${entry.id})">✕ Eliminar</button>
+      </div>
+      <div class="he-winners">
+        ${entry.ganadores.map((g, i) => `
+          <div class="hw-row">
+            <span class="hw-medal">${medals[i]}</span>
+            <span class="hw-name">${g.nombre}</span>
+            <span class="hw-ig">${g.ig}</span>
+            <span class="hw-prize">${g.premio}</span>
+          </div>`).join('')}
+      </div>
     </div>
   `).join('');
 }
