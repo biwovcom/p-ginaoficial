@@ -557,6 +557,151 @@
 
     .btn-reset:hover { border-color: rgba(217,79,61,0.4); color: #f07060; }
 
+    /* ── LOCK OVERLAY (público ve esto en vez de los botones) ── */
+    .lock-msg {
+      width: 100%;
+      padding: 1.1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+    }
+
+    /* ── MODAL ADMIN ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: #0a1628;
+      border: 1px solid rgba(245,200,66,0.35);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(245,200,66,0.25);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.15em;
+      outline: none;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .modal-input:focus { border-color: var(--gold); }
+    .modal-input.error { border-color: #f07060; }
+
+    .modal-error {
+      font-size: 0.75rem;
+      color: #f07060;
+      margin-bottom: 0.75rem;
+      display: none;
+    }
+
+    .modal-error.show { display: block; }
+
+    .btn-unlock {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-unlock:hover { background: var(--gold2); }
+
+    .btn-modal-cancel {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .btn-modal-cancel:hover { color: var(--white); }
+
+    /* Admin indicator */
+    .admin-badge {
+      display: none;
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      background: rgba(245,200,66,0.12);
+      border: 1px solid rgba(245,200,66,0.3);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: 99px;
+      z-index: 90;
+      cursor: pointer;
+    }
+
+    .admin-badge:hover { background: rgba(245,200,66,0.2); }
+
+    /* Admin toggle link (bottom page, barely visible) */
+    .admin-link {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.08);
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+      user-select: none;
+    }
+
+    .admin-link:hover { color: rgba(255,255,255,0.25); }
+
     /* ── GANADORES CARDS ── */
     #ganadores {
       padding: 5rem 6%;
@@ -758,6 +903,23 @@
 </head>
 <body>
 
+<!-- MODAL ADMIN -->
+<div class="modal-overlay" id="modal-admin">
+  <div class="modal-box">
+    <div class="modal-icon">🔐</div>
+    <div class="modal-title">Acceso administrador</div>
+    <div class="modal-sub">Ingresa la contraseña para controlar el sorteo</div>
+    <input class="modal-input" id="admin-input" type="password" placeholder="••••••••"
+      onkeydown="if(event.key==='Enter') verificarAdmin()">
+    <div class="modal-error" id="modal-error">Contraseña incorrecta. Inténtalo de nuevo.</div>
+    <button class="btn-unlock" onclick="verificarAdmin()">Desbloquear</button>
+    <button class="btn-modal-cancel" onclick="cerrarModal()">Cancelar</button>
+  </div>
+</div>
+
+<!-- ADMIN BADGE (visible solo cuando está en modo admin) -->
+<div class="admin-badge" id="admin-badge" onclick="cerrarSesionAdmin()">🔑 Admin · Cerrar sesión</div>
+
 <!-- CONFETTI -->
 <div class="confetti-wrap" id="confetti" aria-hidden="true"></div>
 
@@ -875,8 +1037,12 @@
 
       </div>
 
-      <button class="btn-girar" id="btn-girar" onclick="girar()">🎰 GIRAR — 1er Lugar</button>
+      <!-- Visible solo para admin -->
+      <button class="btn-girar" id="btn-girar" onclick="girar()" style="display:none;">🎰 GIRAR — 1er Lugar</button>
       <button class="btn-reset" id="btn-reset" onclick="resetSorteo()">↺ Reiniciar sorteo</button>
+
+      <!-- Visible para el público -->
+      <div class="lock-msg" id="lock-msg">🔒 El sorteo es controlado en vivo por Biwov_</div>
     </div>
 
   </div>
@@ -915,41 +1081,31 @@
   <!-- Para agregar sorteos futuros, copia el bloque .historial-entry de abajo -->
 
   <div id="historial-lista">
-    <!-- EJEMPLO — descomenta y edita cuando tengas ganadores:
-    <div class="historial-entry">
+
+    <!-- ══ SORTEO 1 — 4ta Feria Empresarial ══
+         Después del sorteo, reemplaza los textos entre comillas con los ganadores reales
+         y elimina esta línea de comentario. -->
+    <div class="historial-entry" id="he-20jun2026">
       <div class="he-header">
-        <span class="he-event">4ta Feria Empresarial · Manizales</span>
+        <span class="he-event">4ta Feria Empresarial y de Emprendimiento · Manizales</span>
         <span class="he-date">20 Jun 2026</span>
       </div>
-      <div class="he-winners">
-        <div class="hw-row">
-          <span class="hw-medal">🥇</span>
-          <span class="hw-name">Nombre Ganador 1</span>
-          <span class="hw-ig">@handle</span>
-          <span class="hw-prize">Página Web + SEO</span>
-        </div>
-        <div class="hw-row">
-          <span class="hw-medal">🥈</span>
-          <span class="hw-name">Nombre Ganador 2</span>
-          <span class="hw-ig">@handle</span>
-          <span class="hw-prize">Video Promocional</span>
-        </div>
-        <div class="hw-row">
-          <span class="hw-medal">🥉</span>
-          <span class="hw-name">Nombre Ganador 3</span>
-          <span class="hw-ig">@handle</span>
-          <span class="hw-prize">Asesoría Digital</span>
+      <div class="he-winners" id="historial-winners-1">
+        <!-- Se llenan automáticamente al terminar el sorteo, o edita manualmente aquí -->
+        <div class="hw-row" style="color:rgba(255,255,255,0.25); font-size:0.8rem; justify-content:center;">
+          Sorteo en proceso — los ganadores aparecerán aquí al finalizar
         </div>
       </div>
     </div>
-    -->
-    <div class="historial-empty" id="historial-empty">
-      El primer sorteo de Biwov_ se realiza hoy, 20 de junio de 2026.<br>
-      <span style="opacity:0.5;">Los resultados quedarán guardados aquí.</span>
-    </div>
+
+    <!-- PARA FUTUROS SORTEOS: copia el bloque .historial-entry de arriba y pégalo aquí -->
+
   </div>
 </section>
 
+
+<!-- ADMIN LINK — casi invisible, solo tú sabes que está aquí -->
+<span class="admin-link" onclick="abrirModal()">· · ·</span>
 
 <!-- FOOTER -->
 <footer>
@@ -964,6 +1120,57 @@
 
 
 <script>
+// ─── CONTRASEÑA ADMIN ────────────────────────────────────────────
+// Para cambiar la contraseña: reemplaza el texto entre comillas de la línea de abajo
+const ADMIN_PASS = 'Biwov2026';
+let isAdmin = false;
+
+function abrirModal() {
+  document.getElementById('modal-admin').classList.add('open');
+  document.getElementById('admin-input').value = '';
+  document.getElementById('admin-input').classList.remove('error');
+  document.getElementById('modal-error').classList.remove('show');
+  setTimeout(() => document.getElementById('admin-input').focus(), 100);
+}
+
+function cerrarModal() {
+  document.getElementById('modal-admin').classList.remove('open');
+}
+
+function verificarAdmin() {
+  const val = document.getElementById('admin-input').value;
+  if (val === ADMIN_PASS) {
+    isAdmin = true;
+    cerrarModal();
+    activarModoAdmin();
+  } else {
+    document.getElementById('admin-input').classList.add('error');
+    document.getElementById('modal-error').classList.add('show');
+    document.getElementById('admin-input').value = '';
+    document.getElementById('admin-input').focus();
+  }
+}
+
+function activarModoAdmin() {
+  document.getElementById('btn-girar').style.display = 'block';
+  document.getElementById('lock-msg').style.display  = 'none';
+  document.getElementById('admin-badge').style.display = 'block';
+}
+
+function cerrarSesionAdmin() {
+  if (!confirm('¿Cerrar sesión de administrador?')) return;
+  isAdmin = false;
+  document.getElementById('btn-girar').style.display = 'none';
+  document.getElementById('lock-msg').style.display  = 'block';
+  document.getElementById('admin-badge').style.display = 'none';
+  document.getElementById('btn-reset').style.display = 'none';
+}
+
+// Cerrar modal al hacer clic fuera
+document.getElementById('modal-admin').addEventListener('click', function(e) {
+  if (e.target === this) cerrarModal();
+});
+
 // ─── PARTICIPANTES ───────────────────────────────────────────────
 let participantes = [
   { nombre: "Maria del Pilar Muñoz",      ig: "@jabue.lc" },
@@ -1129,6 +1336,7 @@ function girar() {
       document.getElementById('slot-status').textContent =
         '¡Los 3 ganadores han sido seleccionados! 🎊';
       document.getElementById('btn-reset').style.display = 'block';
+      guardarEnHistorial();
       launchConfetti();
     }
   });
@@ -1221,6 +1429,7 @@ function resetUI() {
 }
 
 function resetSorteo() {
+  if (!isAdmin) return;
   if (!confirm('¿Reiniciar el sorteo? Se perderán los ganadores actuales.')) return;
   ganadores    = [];
   currentRound = 0;
@@ -1228,6 +1437,23 @@ function resetSorteo() {
   renderTags();
   populateSlotIdle();
   resetUI();
+}
+
+// ─── GUARDAR EN HISTORIAL ────────────────────────────────────────
+function guardarEnHistorial() {
+  const medals  = ['🥇', '🥈', '🥉'];
+  const prizes  = ['Página Web + SEO', 'Video Promocional', 'Asesoría Digital'];
+  const hwList  = document.getElementById('historial-winners-1');
+  if (!hwList) return;
+
+  hwList.innerHTML = ganadores.map((g, i) => `
+    <div class="hw-row">
+      <span class="hw-medal">${medals[i]}</span>
+      <span class="hw-name">${g.nombre}</span>
+      <span class="hw-ig">${g.ig}</span>
+      <span class="hw-prize">${prizes[i]}</span>
+    </div>
+  `).join('');
 }
 
 // ─── CONFETTI BURST ──────────────────────────────────────────────
